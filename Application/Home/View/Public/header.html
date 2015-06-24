@@ -1,0 +1,261 @@
+<block name="header">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="70" background="__PUBLIC__/Home/images/main_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="24"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="270" height="24" background="__PUBLIC__/Home/images/main_03.gif">&nbsp;</td>
+            <td width="505" background="__PUBLIC__/Home/images/main_04.gif">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td width="21"><img src="__PUBLIC__/Home/images/main_07.gif" width="21" height="24"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr height="50">
+        <td ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="270" height="38" ><a href="{:U('Index/index')}"> <img src="__PUBLIC__/Home/images/main_09.gif" title="返回首页"style="img:border:none;"></a>&nbsp;</td>
+            <td><table width="100%" style="margin-top:-20px" border="0" cellspacing="0" cellpadding="0">
+              <tr >
+                <td width="77%" height="0" valign="bottom">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="50" height="19"><div align="center"><img src="__PUBLIC__/Home/images/main_12.gif" width="49" height="19"></div></td>
+                    <td width="50"><div align="center"><img src="__PUBLIC__/Home/images/main_14.gif" width="48" height="19"></div></td>
+                    <td width="50"><div align="center"><img src="__PUBLIC__/Home/images/main_16.gif" width="48" height="19"></div></td>
+                    <td width="50"><div align="center"><img src="__PUBLIC__/Home/images/main_18.gif" width="48" height="19"></div></td>
+                    <td width="50"><div align="center"><a href="{:U('User/logout')}" title="退出账户"><img src="__PUBLIC__/Home/images/main_20.gif" width="48" height="19"/></a></div></td>
+                    <td width="26"><div align="center"><img src="__PUBLIC__/Home/images/main_21.gif" width="26" height="19"></div></td>
+                    <td width="100"><div align="center"><img src="__PUBLIC__/Home/images/main_22.gif" width="98" height="19"></div></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table></td>
+                <td width="350" class="STYLE2"align="right"><span> 今天是:</span><span id="showtimes"><script language="javascript">show_cur_times();</script></span></td>
+              </tr>
+            </table></td>
+
+            <td width="21"><img src="__PUBLIC__/Home/images/main_11.gif" width="21" height="38"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="8" style=" line-height:8px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="270" background="__PUBLIC__/Home/images/main_29.gif" style=" line-height:8px;">&nbsp;</td>
+            <td width="505" background="__PUBLIC__/Home/images/main_30.gif" style=" line-height:8px;">&nbsp;</td>
+            <td style=" line-height:8px;">&nbsp;</td>
+            <td width="21" style=" line-height:8px;"><img src="__PUBLIC__/Home/images/main_31.gif" width="21" height="8"></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="28" background="__PUBLIC__/Home/images/main_36.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="177" height="28" background="__PUBLIC__/Home/images/main_32.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="59%" valign="bottom"><div align="center" class="STYLE1">当前用户：{:get_username()}</div></td>
+          </tr>
+        </table></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="65" height="28"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="23" valign="bottom"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr> 
+                    <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"> <div align="center" class="STYLE3">业务中心</div></td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table></td>
+            <td width="3"><img src="__PUBLIC__/Home/images/main_34.gif" width="3" height="28"></td>
+            <td width="63"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center" class="STYLE3">系统管理</div></td>
+              </tr>
+            </table></td>
+            <td width="3"><img src="__PUBLIC__/Home/images/main_34.gif" width="3" height="28"></td>
+            <td width="63"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center" class="STYLE3">通讯录</div></td>
+              </tr>
+            </table></td>
+            <td width="3"><img src="__PUBLIC__/Home/images/main_34.gif" width="3" height="28"></td>
+            <td width="63"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center" class="STYLE3">数据管理</div></td>
+              </tr>
+            </table></td>
+            <td width="3"><img src="__PUBLIC__/Home/images/main_34.gif" width="3" height="28"></td>
+            <td width="63"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center" class="STYLE3">统计报表</div></td>
+              </tr>
+            </table></td>
+            <td width="3"><img src="__PUBLIC__/Home/images/main_34.gif" width="3" height="28"></td>
+            <td width="63"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center" class="STYLE3">业务管理</div></td>
+              </tr>
+            </table></td>
+            <td width="3"><img src="__PUBLIC__/Home/images/main_34.gif" width="3" height="28"></td>
+            <td width="63"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center" class="STYLE3">系统配置</div></td>
+              </tr>
+            </table></td>
+            <td width="3"><img src="__PUBLIC__/Home/images/main_34.gif" width="3" height="28"></td>
+            <td width="63"><table width="58" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="20" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(__PUBLIC__/Home/images/bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#a6d0e7'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center" class="STYLE3">升级维护</div></td>
+              </tr>
+            </table></td>
+            <td>&nbsp;</td>
+          </tr>
+        </table></td>
+        <td width="21"><img src="__PUBLIC__/Home/images/main_37.gif" width="21" height="28"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</block>
+
+<script type="text/javascript" language="javascript">
+
+function show_cur_times(){
+
+//获取当前日期
+
+ var date_time = new Date();
+
+ //定义星期
+
+ var week;
+
+ //switch判断
+
+ switch (date_time.getDay()){
+
+case 1: week="星期一"; break;
+
+case 2: week="星期二"; break;
+
+case 3: week="星期三"; break;
+
+case 4: week="星期四"; break;
+
+case 5: week="星期五"; break;
+
+case 6: week="星期六"; break;
+
+default:week="星期天"; break;
+
+ }
+
+ 
+
+ //年
+
+ var year = date_time.getFullYear();
+
+  //判断小于10，前面补0
+
+   if(year<10){
+
+  year="0"+year;
+
+ }
+
+ 
+
+ //月
+
+ var month = date_time.getMonth()+1;
+
+  //判断小于10，前面补0
+
+  if(month<10){
+
+month="0"+month;
+
+ }
+
+ 
+
+ //日
+
+ var day = date_time.getDate();
+
+  //判断小于10，前面补0
+
+   if(day<10){
+
+  day="0"+day;
+
+ }
+
+ 
+
+ //时
+
+ var hours =date_time.getHours();
+
+  //判断小于10，前面补0
+
+    if(hours<10){
+
+  hours="0"+hours;
+
+ }
+
+ 
+
+ //分
+
+ var minutes =date_time.getMinutes();
+
+  //判断小于10，前面补0
+
+    if(minutes<10){
+
+  minutes="0"+minutes;
+
+ }
+
+ 
+
+ //秒
+
+ var seconds=date_time.getSeconds();
+
+  //判断小于10，前面补0
+
+    if(seconds<10){
+
+  seconds="0"+seconds;
+
+ }
+
+ 
+
+ //拼接年月日时分秒
+
+ var date_str = year+"年"+month+"月"+day+"日 "+hours+":"+minutes+":"+seconds+" "+week;
+
+ 
+
+ //显示在id为showtimes的容器里
+
+ document.getElementById("showtimes").innerHTML= date_str;
+
+}
+
+ 
+
+ //设置1秒调用一次show_cur_times函数
+
+setInterval("show_cur_times()",100);
+
+</script>

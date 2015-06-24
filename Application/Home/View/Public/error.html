@@ -1,0 +1,236 @@
+<title>示例演示JavaScript实现倒计时结束后页面自动跳转</title>
+<style type="text/css">
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font:12px Verdana, Arial, Geneva, sans-serif;
+	color:#404040;
+	background:#3e4449;
+}
+img {
+	border-style:none;
+}
+#jump {
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:480px;
+	height:140px;
+	padding:20px;
+	padding-top:30px;
+	margin:-95px 0 0 -260px;
+	background:#fff;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	-webkit-box-shadow:0 0px 6px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow:0 0px 6px rgba(0, 0, 0, 0.8);
+	box-shadow:0px 0px 6px rgba(0, 0, 0, 0.8);
+}
+.tip-label {
+	position:absolute;
+	top:-20px;
+	left:195px;
+	width:130px;
+	height:40px;
+	background:url('images/label.png') no-repeat;
+}
+.content {
+	position:relative;
+	width:300px;
+	height:140px;
+	overflow:auto;
+	padding-left:180px;
+}
+.content img {
+	position:absolute;
+	top:0;
+	left:0;
+	width:150px;
+	height:120px;
+}
+.content h2 {
+	line-height:40px;
+	color:red;
+	padding-top:10px;
+}
+#info, #jump-link {
+	font:14px "Microsoft YaHei", Verdana, Arial, Geneva, sans-serif;
+	line-height:30px;
+}
+#time {
+	color:#0033ff;
+	font:14px Verdana, Arial, Geneva, sans-serif;
+}
+.btn {
+	display:inline-block;
+	margin-left:15px;
+	margin-top:3px;
+	background:#0066ff;
+	color:#fff;
+	vertical-align:middle;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	padding:2px 12px;
+	text-decoration:none;
+	height:20px;
+	line-height:20px;
+}
+</style>
+</head>
+
+<body>
+<div id="jump">
+  <div class="tip-label"></div>
+  <div class="content"> <img alt="提示" src="__PUBLIC__/Home/images/404.gif">
+    <h2>sorry</h2>
+    <p id="info">您访问页面没有找到！</p>
+    <p id="jump-link"> 
+        页面&nbsp;<span id="time">5</span>&nbsp;自动跳转到首页 
+        <a href="http://www.alleyloft.com/share" id="btn" class="btn" title="马上跳转">马上跳转</a> 
+    </p>
+  </div>
+</div>
+<script type="text/javascript">
+    (function(){
+        var timer,
+            count = 5,
+            show = document.getElementById('time'),
+			alink = document.getElementById('btn');
+        show.innerHTML = count;
+        timer = setInterval(function(){
+            if(count <= 0)
+            {
+                clearInterval(timer);
+                window.location.href = alink.href;
+            }
+            else
+                show.innerHTML = --count;
+        },1000)
+    })(window)
+</script>
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="alleyloft,小巷阁楼" />
+<title>示例演示JavaScript实现倒计时结束后页面自动跳转</title>
+<style type="text/css">
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font:12px Verdana, Arial, Geneva, sans-serif;
+	color:#404040;
+	background:#3e4449;
+}
+img {
+	border-style:none;
+}
+#jump {
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:480px;
+	height:140px;
+	padding:20px;
+	padding-top:30px;
+	margin:-95px 0 0 -260px;
+	background:#fff;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	-webkit-box-shadow:0 0px 6px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow:0 0px 6px rgba(0, 0, 0, 0.8);
+	box-shadow:0px 0px 6px rgba(0, 0, 0, 0.8);
+}
+.tip-label {
+	position:absolute;
+	top:-20px;
+	left:195px;
+	width:130px;
+	height:40px;
+	background:url('__PUBLIC__/Home/images/label.png') no-repeat;
+}
+.content {
+	position:relative;
+	width:300px;
+	height:140px;
+	overflow:auto;
+	padding-left:180px;
+}
+.content img {
+	position:absolute;
+	top:0;
+	left:0;
+	width:150px;
+	height:120px;
+}
+.content h2 {
+	line-height:40px;
+	color:red;
+	padding-top:10px;
+}
+#info, #jump-link {
+	font:14px "Microsoft YaHei", Verdana, Arial, Geneva, sans-serif;
+	line-height:30px;
+}
+#time {
+	color:#0033ff;
+	font:14px Verdana, Arial, Geneva, sans-serif;
+}
+.btn {
+	display:inline-block;
+	margin-left:15px;
+	margin-top:3px;
+	background:#0066ff;
+	color:#fff;
+	vertical-align:middle;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	padding:2px 12px;
+	text-decoration:none;
+	height:20px;
+	line-height:20px;
+}
+</style>
+</head>
+
+<body>
+<div id="jump">
+  <div class="tip-label"></div>
+  <div class="content"> <img alt="提示" src="images/404.gif">
+    <h2>sorry</h2>
+    <p id="info">您访问页面没有找到！</p>
+    <p id="jump-link"> 
+        页面&nbsp;<span id="time">5</span>&nbsp;自动跳转到首页 
+        <a href="{:U('User/login')}" id="btn" class="btn" title="马上跳转">马上跳转</a> 
+    </p>
+  </div>
+</div>
+<script type="text/javascript">
+    (function(){
+        var timer,
+            count = 5,
+            show = document.getElementById('time'),
+			alink = document.getElementById('btn');
+        show.innerHTML = count;
+        timer = setInterval(function(){
+            if(count <= 0)
+            {
+                clearInterval(timer);
+                window.location.href = alink.href;
+            }
+            else
+                show.innerHTML = --count;
+        },1000)
+    })(window)
+</script>
+</body>
+</html>

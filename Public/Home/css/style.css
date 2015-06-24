@@ -1,0 +1,569 @@
+/***全局样式*****/
+body {
+	width:100%;
+	height:980px;
+	margin:0px auto;
+	background-color:#FFFFFF;
+}
+body a img{
+	border:none;
+}
+.big_box{
+	margin:0 auto;
+	width:100%;
+	height:90%;
+}
+
+/**菜单标题字体*/
+.STYLE1 {
+	color: #FFFFFF;
+	font-size: 12px;
+}
+
+/**时间前面的标记*/
+.STYLE2 {
+	font-size: 12px;
+	color:#FFFFFF;
+}
+/* 菜单列表字体**/
+.STYLE3 {
+	color:#033d61;
+	font-size: 12px;
+	
+}
+.STYLE3 a{
+	text-decoration: none;
+}
+/*基本操作字体**/
+.STYLE4 {
+	font-size: 18px;
+	text-align: center;
+	margin:0 auto;
+	line-height: 30px;
+	background: url(../images/tab_05.gif) repeat-x;
+}
+.STYLE5{
+	color:#033d61;
+	font-size: 12px; 
+}
+/*订单信息标题栏*/
+.STYLE6{
+	color:#033d61;
+	font-size: 15px;
+	background: url(../images/tab_05.gif) repeat-x;line-height: 20px;
+}
+/*订单信息内容背景**/
+.STYLE7{
+	color:#033d61;
+	font-size: 12px;
+	line-height:12px;
+}
+.STYLE8{width:70px;line-height: 20px;text-align: center}
+.STYLE9{width:75px;line-height: 20px;text-align: left}
+.STYLE10{width:75px;line-height: 20px;text-align: right}
+
+/**登陆页*****/
+.login_page{width:100%;height:100%;margin:0;padding:0;background:#016AA9;}
+#login_03{height:235px; background:#016AA9 url(../images/login_03.gif) center no-repeat;}
+#login_08{height:248px;padding:0px; background:#016AA9 url(../images/footer.gif) center no-repeat;}
+#inp_1{position: relative;top:-40%; left:42%;}
+#inp_2{position: relative;top:-40%; left:42%;}
+#login_sub{position: relative;top:-40%; left:42%;background:#016AA9 url(../images/dl.gif) center no-repeat;}
+#msg_span{position: relative;top:58%; left:42%;color:#ffffff;text-align: center;}
+
+/*订单详情页**/
+/*头部**/
+#header{width:100%;height:80%;margin:0 auto;}
+/*正文**/
+
+/*左侧菜单栏**/
+.left_box{height:662px;border-left:4px solid #016AA9; }
+.main_left{width:auto;height:588px;float: left;}
+.left_table{width:165px; height:100%;}
+.middle .navPoint {color: white; cursor: hand; font-family: Webdings;font-size: 9pt 
+} 
+/**右侧内容**/
+
+.content_right{width:800px;height:750px;margin-left:163px;}
+#title_position{background: url(../images/tab_05.gif) repeat-x;line-height: 15px;}
+#title_position .STYLE3{}
+#title_position #img_tb{width:16px; height:16px; }
+
+/*客戶信息*/
+.tab_info {width:795px;height:280px;border:0px groove #016AA9;position:absolute;top:16%;background-color: #FFFFFF}
+/*订单日志**/
+
+.log_tab{margin-bottom: 50px;}
+/*物流**/
+#wuliu{width:380px;height:300px;position: absolute;margin-left:800px;top:130px;background-color: #FFFFFF}
+
+
+
+
+/**底部栏***/
+#footer{height:20px;width:100%;position:absolute;bottom:0px; background:#016AA9 url(../images/main_58.gif) repeat-x;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,644 @@
+<block name="body"> <extend name="Base/common" /> 
+<div id="body">
+<!-- <div id="top_bannerC">
+<a class="" href="http://www.lepin.com/april/index.html" target="_blank"></a>
+</div>
+--><!-- 数据展示类接口需要版本号 -->
+
+
+<input id="version" value="1" type="hidden">
+<div id="search_box">
+<form id="searchForm" name="searchForm" action="http://www.lepin.com/jobs/list_" method="get">
+	<ul id="searchType">
+		<li data-searchtype="1" class="type_selected">职位</li>
+		<li data-searchtype="4">公司</li>
+	</ul>
+	<div class="searchtype_arrow"></div>
+	<span class="ui-helper-hidden-accessible" aria-live="polite" role="status"></span>
+	<input autocomplete="off" class="ui-autocomplete-input" style="color: rgb(153, 153, 153);" id="search_input" name="kd" tabindex="1" value="iOS" placeholder="请输入职位名称，如：产品经理" type="text">
+	<input name="spc" id="spcInput" value="" type="hidden">
+	<input name="pl" id="plInput" value="" type="hidden">
+	<input name="gj" id="gjInput" value="" type="hidden">
+	<input name="xl" id="xlInput" value="" type="hidden">
+	<input name="yx" id="yxInput" value="" type="hidden">
+	<input name="gx" id="gxInput" value="" type="hidden">
+	<input name="st" id="stInput" value="" type="hidden">
+	<input name="labelWords" id="labelWords" value="" type="hidden">
+	<input name="lc" id="lc" value="" type="hidden">
+	<input name="workAddress" id="workAddress" value="" type="hidden">
+	<input name="city" id="cityInput" value="" type="hidden">
+	<input name="requestId" id="requestId" value="" type="hidden">
+	<input id="search_button" value="搜索" type="submit"></form>
+<input id="search_py" value="" type="hidden">
+<input id="isIndex" value="true" type="hidden"></div>
+<style>
+.ui-autocomplete{width:488px;background:#fafafa !important;position: relative;z-index:10;border: 2px solid #00b38a;}
+.ui-autocomplete-category{font-size:16px;color:#999;width:50px;position: absolute;z-index:11; right: 0px;/*top: 6px; */text-align:center;border-top: 1px dashed #e5e5e5;padding:5px 0;}
+.ui-menu-item{ *width:439px;vertical-align: middle;position: relative;margin: 0px;margin-right: 50px !important;background:#fff;border-right: 1px dashed #ededed;}
+.ui-menu-item a{display:block;overflow:hidden;}
+</style>
+<dl class="hotSearch">
+<dt>热门搜索：</dt>
+<dd>
+	<a href="http://www.lepin.com/zhaopin/jiaohusheji?labelWords=hot">交互设计</a>
+</dd>
+<dd>
+	<a href="http://www.lepin.com/zhaopin/.NET?labelWords=hot">.NET</a>
+</dd>
+<dd>
+	<a href="http://www.lepin.com/zhaopin/xiangmujingli?labelWords=hot" class="current">项目经理</a>
+</dd>
+<dd>
+	<a href="http://www.lepin.com/zhaopin/shujuyunying?labelWords=hot">数据运营</a>
+</dd>
+<dd>
+	<a href="http://www.lepin.com/zhaopin/SEO?labelWords=hot">SEO</a>
+</dd>
+<dd>
+	<a href="http://www.lepin.com/zhaopin/yidongchanpinjingli?labelWords=hot">移动产品经理</a>
+</dd>
+<dd>
+	<a href="http://www.lepin.com/zhaopin/xinmeitiyunying?labelWords=hot">新媒体运营</a>
+</dd>
+</dl>
+<script type="text/javascript" src="__PUBLIC__/Home/js/search.js"></script>
+<div id="home_banner">
+<ul style="height: 480px; margin-top: -320px;" class="banner_bg">
+	<li class="banner_bg_1 current">
+		<a href="http://www.lepin.com/speed/speed11.html?utm_source=DH__lagou&amp;utm_medium=jiaodiantu&amp;utm_campaign=speed11" target="_blank">
+			<img src="__PUBLIC__/Home/images/ff8080814d429a94014d576b9b8e0461.png" alt="极速入职11" height="160" width="612"></a>
+	</li>
+	<li class="banner_bg_2">
+		<a href="http://www.lepin.com/topic/zhubaijia.html?utm_source=DH__lagou&amp;utm_medium=jiaodiantu&amp;utm_campaign=zhubaijia" target="_blank">
+			<img src="__PUBLIC__/Home/images/ff8080814d661121014d670f2ea30093.jpg" alt="住百家" height="160" width="612"></a>
+	</li>
+	<li class="banner_bg_3">
+		<a href="http://www.lepin.com/topic/thesame.html?utm_source=DH__lagou&amp;utm_medium=jiaodiantu&amp;utm_campaign=same" target="_blank">
+			<img src="__PUBLIC__/Home/images/ff8080814d661121014d71c2c050020e.jpg" alt="SAME" height="160" width="612"></a>
+	</li>
+</ul>
+<div class="banner_control"> <em style="top: 110px;"></em>
+	<ul class="thumbs">
+		<li class="thumbs_1">
+			<i></i>
+			<img src="__PUBLIC__/Home/images/ff8080814d429a94014d576bfae80462.jpg" height="42" width="113"></li>
+		<li class="thumbs_2">
+			<i></i>
+			<img src="__PUBLIC__/Home/images/ff8080814d429a94014d57788fac0469.jpg" height="42" width="113"></li>
+		<li class="thumbs_3 current">
+			<i></i>
+			<img src="__PUBLIC__/Home/images/ff8080814d661121014d71c2e433020f.jpg" height="42" width="113"></li>
+	</ul>
+</div>
+</div>
+<!--/#main_banner-->
+
+<ul id="da-thumbs" class="da-thumbs">
+<li>
+	<a href="http://www.lepin.com/gongsi/320.html?i=tg-1" target="_blank">
+		<img src="__PUBLIC__/Home/images/ff8080814d2c7a20014d36896a4d018d.jpg" alt="玄武科技" height="113" width="113">
+		<div class="hot_info">
+			<h2 title="玄武科技">玄武科技</h2> <em></em>
+			<p title="中国领先的专业移动信息化服务提供商">中国领先的专业移动信息化服务提供商</p>
+		</div>
+	</a>
+</li>
+<li>
+	<a href="http://www.lepin.com/gongsi/35876.html?i=tg-2" target="_blank">
+		<img src="__PUBLIC__/Home/images/ff8080814d429a94014d51e22d030363.gif" alt="人人投" height="113" width="113">
+		<div class="hot_info">
+			<h2 title="人人投">人人投</h2>
+			<em></em>
+			<p title="人人投投资您身边的店铺">人人投投资您身边的店铺</p>
+		</div>
+	</a>
+</li>
+<li>
+	<a href="http://www.lepin.com/gongsi/30376.html?i=tg-3" target="_blank">
+		<img src="__PUBLIC__/Home/images/ff8080814d661121014d6beb60450115.png" alt="兰渡文化" height="113" width="113">
+		<div class="hot_info">
+			<h2 title="兰渡文化">兰渡文化</h2>
+			<em></em>
+			<p title="专注于互联网栏目的互联网传媒公司">专注于互联网栏目的互联网传媒公司</p>
+		</div>
+	</a>
+</li>
+<li>
+	<a href="http://www.lepin.com/gongsi/24769.html?i=tg-4" target="_blank">
+		<img src="__PUBLIC__/Home/images/ff8080814d429a94014d578a9e41046e.png" alt="沱沱工社" height="113" width="113">
+		<div style="display: none; left: -100%; top: 0px; transition: all 300ms ease 0s;" class="hot_info">
+			<h2 title="沱沱工社">沱沱工社</h2>
+			<em></em>
+			<p title="做中国最大，最有良心的有机食品网上超市">做中国最大，最有良心的有机食品网上超市</p>
+		</div>
+	</a>
+</li>
+<li>
+	<a href="http://www.lepin.com/gongsi/9127.html?i=tg-5" target="_blank">
+		<img src="__PUBLIC__/Home/images/ff8080814d578b61014d578c37d50000.png" alt="蜜芽宝贝" height="113" width="113">
+		<div style="display: none; left: -100%; top: 0px; transition: all 300ms ease 0s;" class="hot_info">
+			<h2 title="蜜芽宝贝">蜜芽宝贝</h2>
+			<em></em>
+			<p title="中国首家进口母婴品牌限时特卖商城">中国首家进口母婴品牌限时特卖商城</p>
+		</div>
+	</a>
+</li>
+<li class="last">
+	<a href="http://www.lepin.com/gongsi/33236.html?i=tg-6" target="_blank">
+		<img src="__PUBLIC__/Home/images/ff8080814d429a94014d57896800046d.png" alt="这里科技" height="113" width="113">
+		<div class="hot_info">
+			<h2 title="这里科技">这里科技</h2>
+			<em></em>
+			<p title="邀你一起创造最牛社交APP">邀你一起创造最牛社交APP</p>
+		</div>
+	</a>
+</li>
+</ul>
+
+<ul class="reset hotabbing">
+<li class="current">热门职位</li>
+<li>最新职位</li>
+</ul>
+<div id="hotList">
+<ul class="hot_pos hot_posHotPosition hot_position_list reset">
+	<li class="clearfix" data-jobid="458547">
+		<div class="hot_pos_l">
+			<div class="mb10">
+				<a href="http://www.lepin.com/jobs/458547.html?source=home_hot" target="_blank">电商运营经理</a>
+				&nbsp;
+				<span class="c9">[广州]</span>
+				<!-- 跳槽月 -->
+			</div>
+			<span>
+				<em class="c7">月薪：</em>
+				10k-20k
+			</span>
+			<span>
+				<em class="c7">经验：</em>
+				3-5年
+			</span>
+			<span>
+				<em class="c7">最低学历：</em>
+				本科
+			</span>
+			<br>
+			<span>
+				<em class="c7">职位诱惑：</em>
+				核心团队 期权激励 高薪保障
+			</span>
+			<br>
+			<span>2天前发布</span>
+			<!-- <a href="#" class="wb">分享到微博</a>
+		-->
+	</div>
+	<div class="hot_pos_r">
+		<div class="mb10 recompany">
+			<a href="http://www.lepin.com/gongsi/36275.html" target="_blank">斯越科技</a>
+		</div>
+		<span>
+			<em class="c7">领域：</em>
+			移动互联网,电子商务
+		</span>
+		<br>
+		<span>
+			<em class="c7">阶段：</em>
+			初创型(天使轮)
+		</span>
+		<span>
+			<em class="c7">规模：</em>
+			50-150人
+		</span>
+		<ul class="companyTags reset">
+			<li>节日礼物</li>
+			<li>技能培训</li>
+			<li>年度旅游</li>
+		</ul>
+	</div>
+
+</li>
+<li class="odd clearfix" data-jobid="680415">
+	<div class="hot_pos_l">
+    	<div class="mb10">
+			<a href="http://www.lagou.com/jobs/680415.html?source=home_hot" target="_blank">运营专员</a> &nbsp;
+            <span class="c9">[北京]</span>
+            <!-- 跳槽月 -->
+        </div>
+        <span><em class="c7">月薪： </em>4k-6k</span>
+        <span><em class="c7">经验：</em> 1-3年</span>
+        <span><em class="c7">最低学历： </em>本科</span>
+        <br>
+        <span><em class="c7">职位诱惑：</em>扁平化管理，弹性工作时间，五险一金</span>
+        <br>
+        <span>1天前发布</span>
+        <!-- <a href="#" class="wb">分享到微博</a> -->
+    </div>
+	<div class="hot_pos_r">
+    	<div class="mb10 recompany"><a href="http://www.lagou.com/gongsi/8559.html" target="_blank">美联英语</a></div>
+            <span><em class="c7">领域：</em> 教育</span>
+                <span><em class="c7">创始人：</em>赵继爽</span><br>
+                <span><em class="c7">阶段：</em> 初创型(未融资)</span>
+                <span><em class="c7">规模：</em>2000人以上</span>
+                <ul class="companyTags reset">
+    				<li>年底双薪</li>
+                </ul>
+    </div>
+</li>
+<a href="http://www.lepin.com/zhaopin/" class="btn fr" target="_blank">查看更多</a>
+</ul>
+<ul class="hot_pos latest_posHotPosition reset" style="display:none;">
+<li class="clearfix" data-jobid="659691">
+<div class="hot_pos_l">
+<div class="mb10">
+<a href="http://www.lepin.com/jobs/659691.html?source=home_latest" target="_blank">高级Java工程师</a>
+&nbsp;
+<span class="c9">[北京]</span>
+<!-- 跳槽月 -->
+</div>
+<span>
+<em class="c7">月薪：</em>
+11k-22k
+</span>
+<span>
+<em class="c7">经验：</em>
+3-5年
+</span>
+<span>
+<em class="c7">最低学历：</em>
+大专
+</span>
+<br>
+<span>
+<em class="c7">职位诱惑：</em>
+根据能力薪资上不封顶~
+</span>
+<br>
+<span>22:14发布</span>
+<!-- <a href="#" class="wb">分享到微博</a>
+-->
+</div>
+<div class="hot_pos_r">
+<div class="mb10">
+<a href="http://www.lepin.com/gongsi/19187.html" target="_blank">友友系统</a>
+</div>
+<span>
+<em class="c7">领域：</em>
+数据服务
+</span>
+<span>
+<em class="c7">创始人：</em>
+姚宏宇
+</span>
+<br>
+<span>
+<em class="c7">阶段：</em>
+成长型(B轮)
+</span>
+<span>
+<em class="c7">规模：</em>
+50-150人
+</span>
+<ul class="companyTags reset">
+<li>年终分红</li>
+<li>股票期权</li>
+<li>五险一金</li>
+</ul>
+</div>
+</li>
+<li class="odd clearfix" data-jobid="680415">
+	<div class="hot_pos_l">
+    	<div class="mb10">
+			<a href="http://www.lagou.com/jobs/680415.html?source=home_hot" target="_blank">运营专员</a> &nbsp;
+            <span class="c9">[北京]</span>
+            <!-- 跳槽月 -->
+        </div>
+        <span><em class="c7">月薪： </em>4k-6k</span>
+        <span><em class="c7">经验：</em> 1-3年</span>
+        <span><em class="c7">最低学历： </em>本科</span>
+        <br>
+        <span><em class="c7">职位诱惑：</em>扁平化管理，弹性工作时间，五险一金</span>
+        <br>
+        <span>1天前发布</span>
+        <!-- <a href="#" class="wb">分享到微博</a> -->
+    </div>
+	<div class="hot_pos_r">
+    	<div class="mb10 recompany"><a href="http://www.lagou.com/gongsi/8559.html" target="_blank">美联英语</a></div>
+            <span><em class="c7">领域：</em> 教育</span>
+                <span><em class="c7">创始人：</em>赵继爽</span><br>
+                <span><em class="c7">阶段：</em> 初创型(未融资)</span>
+                <span><em class="c7">规模：</em>2000人以上</span>
+                <ul class="companyTags reset">
+    				<li>年底双薪</li>
+                </ul>
+    </div>
+</li>
+<a href="http://www.lepin.com/zhaopin/" class="btn fr" target="_blank">查看更多</a>
+</ul>
+</div>
+
+<div class="clear"></div>
+
+<div id="linkbox">
+<dl>
+<dt>友情链接</dt>
+<dd>
+<a href="http://www.kanzhun.com/" target="_blank">看准网</a>
+<span>|</span>
+<a href="http://www.lepin.com/zhaopin/" target="_blank">找工作</a>
+<span>|</span>
+<a href="http://www.wangxiao.cn/" target="_blank">中大网校</a>
+<span>|</span>
+<a href="http://www.liqucn.com/" target="_blank">手机软件</a>
+<span>|</span>
+<a href="http://www.woshipm.com/" target="_blank">人人都是产品经理</a>
+<span>|</span>
+<a href="http://www.job910.com/" target="_blank">教师招聘</a>
+<span>|</span>
+<a href="http://www.chinairn.com/" target="_blank">研究报告</a>
+<span>|</span>
+<a href="http://tuanche.com/" target="_blank">汽车团购</a>
+<a href="http://www.yixieshi.com/" target="_blank">互联网的一些事</a>
+<span>|</span>
+<a href="http://www.eoeandroid.com/" target="_blank">安卓开发论坛</a>
+<span>|</span>
+<a href="http://www.xjhr.com/" target="_blank">新疆人才网</a>
+<span>|</span>
+<a href="http://www.cyedu.org/" target="_blank">会计从业资格证</a>
+<a href="http://www.24en.com/" target="_blank">爱思英语网</a>
+<span>|</span>
+<a href="http://www.xuzhoujob.com/" target="_blank">徐州英才网</a>
+<span>|</span>
+<a href="http://www.thinkphp.cn/" target="_blank">thinkphp</a>
+<span>|</span>
+<a href="http://www.kuakao.com/" target="_blank">考研网</a>
+<span>|</span>
+<a href="http://www.0755rc.com/" target="_blank">深圳人才网</a>
+<span>|</span>
+<a href="http://www.yinhangzhaopin.com/" target="_blank">银行招聘网</a>
+<span>|</span>
+<a href="http://www.enongbang.com/" target="_blank">易农帮</a>
+<a href="http://www.jobeast.com/" target="_blank">中国外语人才网</a>
+<span>|</span>
+<a href="http://www.jianzhi8.com/" target="_blank">兼职吧</a>
+<span>|</span>
+<a href="http://www.1010jz.com/" target="_blank">1010兼职网</a>
+<a href="http://www.cfw.cn/" target="_blank">服装人才网</a>
+<span>|</span>
+<a href="http://www.eoemarket.com/" target="_blank">安卓软件</a>
+<span>|</span>
+<a href="http://www.yinhu.com/" target="_blank">银湖网</a>
+<span>|</span>
+<a href="http://www.metao.com/" target="_blank">蜜桃_全球购</a>
+<a href="http://www.zhubajie.com/" target="_blank">创意服务外包</a>
+<span>|</span>
+<a href="http://www.xilu.com/" target="_blank">西陆军事</a>
+<span>|</span>
+<a href="http://www.houxue.com/" target="_blank">厚学网</a>
+<span>|</span>
+<a href="http://www.sdsgwy.com/" target="_blank">公务员考试信息网</a>
+<span>|</span>
+<a href="http://www.eoffcn.com/" target="_blank">中公公务员网校</a>
+<span>|</span>
+<a href="http://www.01job.cn/" target="_blank">第一招聘网</a>
+<span>|</span>
+<a href="http://www.laoren.com/" target="_blank">老人网</a>
+<span>|</span>
+<a href="http://www.wlmqrc.cn/" target="_blank">乌鲁木齐人才网</a>
+<span>|</span>
+<a href="http://www.cjol.com/" target="_blank">找工作</a>
+<span>|</span>
+<a href="http://www.job5156.com/" target="_blank">招聘网</a>
+<span>|</span>
+<a href="http://www.niaogebiji.com/" target="_blank">鸟哥笔记</a>
+<a href="http://www.eduease.com/" target="_blank">北京家教</a>
+<span>|</span>
+<a href="http://www.tzrl.com/" target="_blank">台州人才网</a>
+<span>|</span>
+<a href="http://www.job256.com/" target="_blank">苏州人才网&nbsp;</a>
+<span>|</span>
+<a href="http://www.zgjsks.com/" target="_blank">教师网</a>
+<span>|</span>
+<a href="http://www.huibo.com/" target="_blank">汇博人才网</a>
+<span>|</span>
+<a href="http://www.jikexueyuan.com/" target="_blank">安卓开发教程</a>
+<span>|</span>
+<a href="http://www.epweike.com/" target="_blank">一品威客</a>
+<span>|</span>
+<a href="http://www.pxto.com.cn/" target="_blank">培训网</a>
+<span>|</span>
+<a href="http://www.tmtpost.com/" target="_blank">钛媒体网</a>
+<span>|</span>
+<a href="http://www.ymt.com/" target="_blank">农业网</a>
+<span>|</span>
+<a href="http://www.qlrc.com/" target="_blank">齐鲁人才网</a>
+<span>|</span>
+<a href="http://www.uisdc.com/" target="_blank">优秀网页设计</a>
+<span>|</span>
+<a href="http://www.91job.com/" target="_blank">义乌人才网</a>
+<span>|</span>
+<a href="http://www.php100.com/" target="_blank">PHP100中文网</a>
+<a href="http://www.lepin.com/af/flink.html" target="_blank" class="more" rel="nofollow">更多</a>
+</dd>
+</dl>
+</div>
+</div>
+<input value="" name="userid" id="userid" type="hidden">
+<!-- <div id="qrSide">
+<a></a>
+</div>
+-->
+<!--  -->
+<script>
+	var a = $('#home_banner .banner_bg li a');
+	var http = 'http://'
+	for(var i=0;i<a.length;i++){
+		var str = $(a[i]).attr('href');
+		if( str.indexOf( http ) < 0 ){
+			$(a[i]).attr('target','_self');
+		}
+	}
+	
+</script>
+<script type="text/javascript">
+$(function(){
+
+	// $('#aaa').click(function(){
+	// 	PASSPORT.popup();
+	// })
+
+
+	$(".mr_del").on("click",function(){
+     $(".mr_remind").hide() ;
+     $.ajax({
+     	type:'POST',
+     	data: {},
+     	url:ctx+'/resume/clearShowNoticeInSeesion.json'
+     }).done(function(result) {
+     });
+   })
+})
+</script>
+<script type="text/javascript">
+var pypv;
+var IsLogin = "";
+IsLogin == '' ? pypv = 2 : pypv = 1;
+var _py = _py || [];
+_py.push(['a', 'ga..n3f5DPSWZXFMcbQa2-GxjX']);
+_py.push(['domain', 'stats.ipinyou.com']);
+_py.push(['pv', pypv]);
+_py.push(['e', '']);
+-function(d) {
+    var s = d.createElement('script'),
+        e = d.body.getElementsByTagName('script')[0];
+    e.parentNode.insertBefore(s, e),
+        f = 'https:' == location.protocol;
+    s.src = (f ? 'https' : 'http') + '://' + ('www.lepin.com') + '/js/adv-sim.js?v=1.5.6_2015052215';
+}(document);
+</script>
+
+<script>
+	// 关闭
+	//3s tips消失
+	var global = {}
+	global.email = "";
+	global.usertoken = $.cookie('user_trace_token');
+</script>
+</div>
+<!-- end #container -->
+</div>
+<!-- end #body -->
+
+<!--copy账号系统的passport.html-->
+<script type="text/javascript">
+	function noticeInit(){
+        var userId = "";
+        var urls = {
+            //调用B端简历管理nav的数字
+            queryTipsNums : "http://hr.lagou.com/recruitment/queryTipsNums.json",
+            //调用B端简历管理Notice Tip
+            queryNotice : "http://hr.lagou.com/notice/queryNotice.json",
+            //调用C端用户的notice数字
+            getPushNoticeOfC : "http://www.lepin.com/common/getPushNoticeOfC.json",
+            //清空C端用户的notice
+            clearPushNoticeOfC : "http://www.lepin.com/common/clearPushNoticeOfC.json",
+            //清空B端用户的notice
+            clearAll : "http://hr.lagou.com/notice/clearAll.json"
+        }
+        
+        	}
+    
+    /*
+    * 全部清空notice
+    */
+    function clearNoticeTip(url){
+        PASSPORT.util.rpc({
+            params:{},
+            url:url,
+            succ:function(data){
+                $('#noticeTip').remove();
+                $("#noticeDot").addClass("dn");
+            },
+            fail:function(data){
+                 console.log('fail:' + data);
+            }
+        });
+    }
+</script>
+<div style="display: none;" id="cboxOverlay"></div>
+<div style="display: none;" tabindex="-1" role="dialog" class="" id="colorbox">
+<div id="cboxWrapper">
+<div>
+<div style="float: left;" id="cboxTopLeft"></div>
+<div style="float: left;" id="cboxTopCenter"></div>
+<div style="float: left;" id="cboxTopRight"></div>
+</div>
+<div style="clear: left;">
+<div style="float: left;" id="cboxMiddleLeft"></div>
+<div style="float: left;" id="cboxContent">
+<div style="float: left;" id="cboxTitle"></div>
+<div style="float: left;" id="cboxCurrent"></div>
+<button id="cboxPrevious" type="button"></button>
+<button id="cboxNext" type="button"></button>
+<button id="cboxSlideshow"></button>
+<div style="float: left;" id="cboxLoadingOverlay"></div>
+<div style="float: left;" id="cboxLoadingGraphic"></div>
+</div>
+<div style="float: left;" id="cboxMiddleRight"></div>
+</div>
+<div style="clear: left;">
+<div style="float: left;" id="cboxBottomLeft"></div>
+<div style="float: left;" id="cboxBottomCenter"></div>
+<div style="float: left;" id="cboxBottomRight"></div>
+</div>
+</div>
+<div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
+</div>
+<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all"></ul>
+<iframe src="__PUBLIC__/Home/js/login.htm" id="auto_login_iframe_0" style="display:none;"></iframe>
+<script type="text/javascript">
+var ctx = "http://www.lepin.com";
+var rctx = "http://hr.lagou.com";
+var pctx = "http://passport.lagou.com";
+
+var frontLogin = "http://www.lepin.com/frontLogin.do";
+var frontLogout = "http://www.lepin.com/frontLogout.do";
+var frontRegister = "http://www.lepin.com/frontRegister.do";
+
+</script>
+<script type="text/javascript">
+	function passportInit(){
+					
+			//alert("not log in ");
+			/* 设置自动登录监听器 */
+			PASSPORT.on('autologin:succ', function(userInfo) {
+				window.location.reload();
+			});
+			PASSPORT.on('autologin:fail', function(data) {
+
+			});
+			// 触发自动登录
+			PASSPORT.auto();
+
+			/* 设置弹窗登录监听器 */
+			PASSPORT.on('popuplogin:succ', function(data) {
+				window.location.reload();
+			});
+			PASSPORT.on('popuplogin:fail', function(data) {
+				
+			});
+
+			// 触发弹窗登录
+			//PASSPORT.popup();
+			
+			//var passport_login_pop = $('.passport_login_pop');
+			$('.passport_login_pop').each(function(){
+				$(this).click(function(){
+					PASSPORT.popup();
+				});
+			})
+           
+                
+	}
+</script>
+<!-- <div class="activity_end">
+<a class="activity_main" href="http://www.lepin.com/marchActivity/index.html" target="_blank"></a>
+</div>
+-->
+<!--后台给出的变量天数》0-->
+<script>
+    var cd = {
+            $: function(id){
+                return document.getElementById(id);    
+            },
+            futureDate: -6474563282,
+            obj: function(){
+                return {
+                    sec: cd.$("activity_minute"),
+                    mini: cd.$("activity_hour"),
+                    hour: cd.$("activity_day")
+                }
+            }
+        };
+        fnTimeCountDown(cd.futureDate, cd.obj());
+</script>
+
+</block>

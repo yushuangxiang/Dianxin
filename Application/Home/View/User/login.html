@@ -1,0 +1,53 @@
+<include file="Public:head"/>
+<div class="login_page">
+    <div id="login_03"></div>
+    <div id="login_08">
+    <form action="{:U('Home/User/login')}" method="post" id="form">
+	<span class="STYLE1" id="inp_1">用户名：&nbsp;<input type="text"name="username"  id="name" onkeyup="uname(this.value)"  placeholder="请输入用户名"/></span></br>
+	<span class="STYLE1" id="inp_2">密 &nbsp; 码：&nbsp;&nbsp;<input type="password" size="20" name="password" id="pass" placeholder="请输入密码"/></span><span >&nbsp;&nbsp;<input type="button" id="login_sub" value="" onclick="blank_c()"style="width:45px;height:20px;border:0px #ff0000 solid;"/></span></br/><span id="msg_span">{$msg}</span>
+
+    </form></div>   
+</div>
+<script type="text/javascript">
+function uname(){
+	var name=$('#name');
+	if(name.val().length>13){
+		$('#name').focus();
+        document.getElementById("name").style.border = "1px solid red";
+		document.getElementById("name").value="";
+		alert('超出最大长度！');
+	}
+}
+function  blank_c(){
+	var pass=$('#pass').val();
+	var uname=$('#name').val();
+	if(uname.length=='0'){
+		$('#name').focus();
+        document.getElementById("name").style.border = "1px solid red";
+        alert('请输入授权账号！');
+	}else{
+		document.getElementById("name").style.border = null;
+		if(pass.length=='0'){
+			$('#pass').focus();
+	        document.getElementById("pass").style.border = "1px solid red";
+	        alert('请输入登录密码！');
+		}else{
+			$('#form').submit();
+		}
+	}
+	
+
+}
+
+</script>
+<script language="javascript">
+ window.onload=function(){
+ 	var msg=$('#msg_span').html();
+	if(msg.length>'0'){
+		$('#name').focus();
+		document.getElementById("name").style.border = "3px solid red";
+		document.getElementById("pass").style.border = "3px solid red";
+	}
+ }
+ 
+</script>
