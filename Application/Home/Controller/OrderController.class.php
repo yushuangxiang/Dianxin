@@ -5,25 +5,7 @@ class OrderController extends Controller {
   /*预处理程序*/
     //预处理订单详情
     public function acceptance(){
-       // $pid['PO_id']=$PO_id;
-       // $orderdata=M('po');
-       // $result=$orderdata->where($pid)->field('PO_id,PO_PordacetID,PO_name,PO_Client_name,PO_Client_bank,PO_Client_bank_id,PO_Client_visa_Nber,PO_Client_addres,PO_Client_phone,FKFS,PO_zt,PO_seles,PO_seles_id,BZ')->select();
-       // //订单备注信息查询
-       //  $beizhu_data=M('history');
-       //  $hid['UP_PO_id']=$result[0]['PO_id'];
-       //  $beizhu=$beizhu_data->where($hid)->select();
-       // //套餐资费查询
-       // $product=M('adsl_tc');
-       // $tc_id['TC_id']=$result[0]['PO_PordacetID'];
-       // $price=$product->where($tc_id)->field('TC_KDZF')->select();
-       // //订单日志查询
-       // $logdata=M('history');
-       // $lid['UP_PO_id']=$PO_id;
-       // $logs=$logdata->where($lid)->field('ID,LB,body,TJ_time,user')->order('TJ_time desc')->select();
-       // $this->assign('log',$logs);
-       // $this->assign('yid',$PO_id);
-       // $this->assign('price',$price[0]);
-       // $this->assign('yushouli',$result[0]);
+
       $id=$_GET['yid'];
       $logs=logs($id);
 
@@ -99,7 +81,10 @@ class OrderController extends Controller {
         $type="dailu";
         $status='%开卡%';
         $result=orderlist($type,$status);
-        $this->assign('dailulist',$result);
+        $page=$result[0];
+        $list=$result[1];
+        $this->assign('page',$page);
+        $this->assign('dailulist',$list);
         $this->display('Order/dailulist');
       }else{
           $this->display('User/login');
@@ -113,7 +98,10 @@ class OrderController extends Controller {
       $type="dailu";
       $status='%录%';
       $result=orderlist($type,$status);
-      $this->assign('dailulist',$result);
+      $page=$result[0];
+      $list=$result[1];
+      $this->assign('page',$page);
+      $this->assign('dailulist',$list);
       $this->display('Order/dailulist');
     }
 
@@ -122,7 +110,10 @@ class OrderController extends Controller {
       $type="pay";
       $status="%宽带待缴费%";
       $result=orderlist($type,$status);
-      $this->assign('paylist',$result);
+      $page=$result[0];
+      $list=$result[1];
+      $this->assign('page',$page);
+      $this->assign('paylist',$list);
       $this->display('Order/paylist');
     }
     /*宽带待施工订单列表*/
@@ -130,7 +121,10 @@ class OrderController extends Controller {
       $type="install";
       $status="%待施工%";
       $result=orderlist($type,$status);
-      $this->assign('install',$result);
+      $page=$result[0];
+      $list=$result[1];
+      $this->assign('page',$page);
+      $this->assign('install',$list);
       $this->display('Order/installlist'); 
     }
 
@@ -139,7 +133,10 @@ class OrderController extends Controller {
       $type="dankuan";
       $status="%单宽%";
       $result=orderlist($type,$status);
-      $this->assign('dankuanlist',$result);
+      $page=$result[0];
+      $list=$result[1];
+      $this->assign('page',$page);
+      $this->assign('dankuanlist',$list);
       $this->display('Order/dankuanlist'); 
     }
     //融合待缴费
@@ -147,7 +144,10 @@ class OrderController extends Controller {
       $type="ronghepay";
       $status="%融合待缴费%";
       $result=orderlist($type,$status);
-      $this->assign('ronghepaylist',$result);
+      $page=$result[0];
+      $list=$result[1];
+      $this->assign('page',$page);
+      $this->assign('ronghepaylist',$list);
       $this->display('Order/ronghepaylist'); 
     }
     //融合完工
@@ -155,15 +155,12 @@ class OrderController extends Controller {
       $type="rongheover";
       $status="%融合完工%";
       $result=orderlist($type,$status);
-      $this->assign('rongheoverlist',$result);
+      $page=$result[0];
+      $list=$result[1];
+      $this->assign('page',$page);
+      $this->assign('rongheoverlist',$list);
       $this->display('Order/rongheoverlist'); 
     }
-
-
-
-
-
-
 
     /*待录订单详情*/
     public function dailu(){

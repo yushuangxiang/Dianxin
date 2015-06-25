@@ -57,7 +57,10 @@ function get_username() {
 		$listurl=('Order/'.$listname);
 		$orderdata=M('po');
 		$map['PO_zt']=array('like',$status);
-		$result=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->limit(10)->order('PO_id desc')->select();
+        $count=$orderdata->where($map)->count();
+        $Page=new \Think\Page($count,25);
+        $show=$Page->show();		
+        $list=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->order('PO_id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		foreach($result as $i=>$val){
 		  $result[$i]["PO_id"]=$val["PO_id"];
 		  $result[$i]["PO_Client_name"]=$val["PO_Client_name"];
@@ -65,9 +68,16 @@ function get_username() {
 		  $result[$i]["PO_Client_visa_Nber"]=$val["PO_Client_visa_Nber"];
 		  $result[$i]["PO_name"]=$val["PO_name"];
 		}
-		return $result;
+		$listarr[0]=$show;
+		$listarr[1]=$list;
+		return $listarr;
     }
-
+        // $orderdata=M('po');
+        // $map['PO_zt']=array('like','%完工%');
+        // $count=$orderdata->where($map)->count();
+        // $Page=new \Think\Page($count,25);
+        // $show=$Page->show();
+        // $list=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->order('PO_id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 
 /**
 *

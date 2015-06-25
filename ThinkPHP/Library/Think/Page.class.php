@@ -17,19 +17,19 @@ class Page{
     public $totalRows; // 总行数
     public $totalPages; // 分页总页面数
     public $rollPage   = 11;// 分页栏每页显示的页数
-	public $lastSuffix = true; // 最后一页是否显示总页数
+	public $lastSuffix = false; // 最后一页是否显示总页数
 
-    private $p       = 'p'; //分页参数名
+    private $p       = 'page'; //分页参数名
     private $url     = ''; //当前链接URL
     private $nowPage = 1;
 
 	// 分页显示定制
     private $config  = array(
         'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
-        'prev'   => '<<',
-        'next'   => '>>',
-        'first'  => '1...',
-        'last'   => '...%TOTAL_PAGE%',
+        'prev'   => '[上一页]',
+        'next'   => '[下一页]',
+        'first'  => '[首页]',
+        'last'   => '[尾页]',
         'theme'  => '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%',
     );
 
@@ -140,6 +140,6 @@ class Page{
             array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'),
             array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages),
             $this->config['theme']);
-        return "<div>{$page_str}</div>";
+        return "<div>&nbsp;&nbsp;&nbsp;{$page_str}&nbsp;&nbsp;&nbsp;</div>";
     }
 }

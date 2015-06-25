@@ -8,17 +8,12 @@ class CenterController extends Controller {
       if($uid>0){
         $orderdata=M('po');
         $map['PO_zt']=array('like','%完工%');
-        $result=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->limit(10)->order('PO_id desc')->select();
-        foreach($result as $i=>$val){
-          $order_done[$i]["PO_id"]=$val["PO_id"];
-          $order_done[$i]["PO_Client_name"]=$val["PO_Client_name"];
-          $order_done[$i]["PO_Client_visa"]=$val["PO_Client_visa"];
-          $order_done[$i]["PO_Client_visa_Nber"]=$val["PO_Client_visa_Nber"];
-          $order_done[$i]["PO_name"]=$val["PO_name"];
-          $order_done[$i]["PO_zt"]=$val["PO_zt"];
-
-        }
-        $this->assign('order_done',$order_done);
+        $count=$orderdata->where($map)->count();
+        $Page=new \Think\Page($count,25);
+        $show=$Page->show();
+        $list=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->order('PO_id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('page',$show);
+        $this->assign('order_done',$list);
         $this->display('Center/order_done');
       }else{
         $this->display('User/login');
@@ -26,7 +21,7 @@ class CenterController extends Controller {
     }
     //已完工详情
     public function orderdetail(){
-      $PO_id=$_GET['qid'];
+      $PO_id=$_GET['wid'];
        $pid['PO_id']=$PO_id;
        $orderdata=M('po');
        $result=$orderdata->where($pid)->field('PO_id,PO_PordacetID,PO_name,PO_Client_name,PO_Client_bank,PO_Client_bank_id,PO_Client_visa_Nber,PO_Client_addres,PO_Client_phone,FKFS,PO_zt,PO_seles,PO_seles_id,BZ')->select();
@@ -52,19 +47,26 @@ class CenterController extends Controller {
     public function chedan(){
     	      $uid=is_login();
       if($uid>0){
-        $orderdata=M('po');
-        $map['PO_zt']=array('like','%撤单%');
-        $result=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->limit(10)->order('PO_id desc')->select();
-        foreach($result as $i=>$val){
-          $chedan[$i]["PO_id"]=$val["PO_id"];
-          $chedan[$i]["PO_Client_name"]=$val["PO_Client_name"];
-          $chedan[$i]["PO_Client_visa"]=$val["PO_Client_visa"];
-          $chedan[$i]["PO_Client_visa_Nber"]=$val["PO_Client_visa_Nber"];
-          $chedan[$i]["PO_name"]=$val["PO_name"];
-          $chedan[$i]["PO_zt"]=$val["PO_zt"];
+        // $orderdata=M('po');
+        // $map['PO_zt']=array('like','%撤单%');
+        // $result=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->limit(10)->order('PO_id desc')->select();
+        // foreach($result as $i=>$val){
+        //   $chedan[$i]["PO_id"]=$val["PO_id"];
+        //   $chedan[$i]["PO_Client_name"]=$val["PO_Client_name"];
+        //   $chedan[$i]["PO_Client_visa"]=$val["PO_Client_visa"];
+        //   $chedan[$i]["PO_Client_visa_Nber"]=$val["PO_Client_visa_Nber"];
+        //   $chedan[$i]["PO_name"]=$val["PO_name"];
+        //   $chedan[$i]["PO_zt"]=$val["PO_zt"];
 
-        }
-        $this->assign('chedan',$chedan);
+        // }
+        $status="%撤单%";
+        $result=orderlist('',$status);
+        $page=$result[0];
+        $list=$result[1];
+        $this->assign('page',$page);
+        // $this->assign('dankuanlist',$list);
+        $this->assign('chedan',$list);
+
         $this->display('Center/chedan');
       }else{
         $this->display('User/login');

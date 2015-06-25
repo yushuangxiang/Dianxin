@@ -8,7 +8,10 @@ class IndexController extends Controller {
 			$type="dailu";
 			$status='%预定%';
 			$result=orderlist($type,$status);
-			$this->assign('yuludan',$result);
+            $page=$result[0];
+            $list=$result[1];
+            $this->assign('page',$page);
+			$this->assign('yuludan',$list);
     		$this->display('Index/index');
     	}else{
     		$this->display('User/login');

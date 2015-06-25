@@ -10,7 +10,10 @@
             <td width="46%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="5%"><div ><img src="__PUBLIC__/Home/images/tb.gif" width="16" height="16" /></div></td>
-                <td width="100%" class="STYLE3"><span class="STYLE3">你当前的位置</span>：[信息处理中心]---[投诉处理]</td>
+                <td width="100%" class="STYLE3"><span class="STYLE3">你当前的位置</span>：[信息处理中心]---[门店物流列表]</td>
+                <td><span><select name="" id=""><option value=""checked="checked">--选择物流类别--</option>
+                                                <option value="门店物流" onclick="javascript:wuliuchk(this.value)">门店物流</option>
+                                                <option value="订单物流" onclick="javascript:wuliuchk(this.value)" >订单物流</option></select></span><span></span></td>
               </tr>
             </table></td>
           </tr>
@@ -31,34 +34,36 @@
             <td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" >
               <input type="checkbox" name="checkbox" value="checkbox" />
             </td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">编号</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">订单号</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">事项类别</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">事项内容</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  align="center">创建时间</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" border="1" align="center">来自于</td>
-            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">状态</td>
-            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">操作</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">物流类别</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">收件门店</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">收件人</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">收件地址</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  align="center">收件人电话</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" border="1" align="center">装箱单</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">创建时间</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">订单状态</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">操作</td>
           </tr>
-          <if condition="$complaints eq null">
+          <if condition="$list eq null">
               <td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" ><input type="checkbox" name="checkbox" value="checkbox" /></td>
               <td colspan="8" class="STYLE3"align="center">暂时无数据！</td>
           <else/>
-              <volist name="complaints" id="data">
+              <volist name="list" id="data">
             <tr>
               <td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" ><input type="checkbox" name="checkbox" value="checkbox" />
               </td> 
-              <td class="STYLE3"align="center">{$data.DBSX_id}</td>
-              <td class="STYLE3"align="center">{$data.po_id}</td>
-              <td class="STYLE3"align="center">{$data.DBSX_LB}</td>
-              <td class="STYLE3"align="center">{$data.body}</td>
-              <td class="STYLE3"align="center">{$data.CJ_time}</td>              
-              <td class="STYLE3"align="center">{$data.form_who}</td>              
-              <td class="STYLE3"align="center">{$data.ZT}</td>
-              <if condition="$data['ZT'] eq '已回复'">
-                <td class="STYLE3"align="center"><a href="{:U('Manage/compdetail?id='.$data['DBSX_id'])}"><input type="button" value="详情" title="点击查看详情" style="float:right"></a></td>
+              <td class="STYLE3"align="center">{$data.LB}</td>
+              <td class="STYLE3"align="center">{$data.czuser}</td>
+              <td class="STYLE3"align="center">{$data.shoujianr}</td>
+              <td class="STYLE3"align="center">{$data.shoujianr_add}</td>
+              <td class="STYLE3"align="center">{$data.shoujianr_tell}</td>
+              <td class="STYLE3"align="center">{$data.zxd}</td>              
+              <td class="STYLE3"align="center">{$data.CJtime}</td>              
+              <td class="STYLE3"align="center">{$data.WLZT}</td>
+              <if condition="$data['WLZT'] eq '待发货'">
+                <td class="STYLE3"align="center"><a href="{:U('Manage/fahuodetail?id='.$data['ID'])}"><input type="button" value="待发货" title="点击发货" style="float:right"></a></td>
               <else/>
-                <td class="STYLE3"align="center"><a href="{:U('Manage/compdetail?id='.$data['DBSX_id'])}"><input type="button" value="回复" title="点击回复" style="float:right"></a></td>
+                <td class="STYLE3"align="center"><a href="{:U('Manage/fahuodetail?id='.$data['ID'])}"><input type="button" value="详情" title="点击查看物流信息" style="float:right"></a></td>
               </if>
               
             </tr>
@@ -74,6 +79,7 @@
   </tr>
 
   <tr>
+<!-- 
     <td height="35" background="__PUBLIC__/Home/images/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="12" height="35"><img src="__PUBLIC__/Home/images/tab_18.gif" width="12" height="35" /></td>
@@ -84,8 +90,8 @@
             <img src="__PUBLIC__/Home/images/22.gif" title="新增">新增
             <img src="__PUBLIC__/Home/images/33.gif" title="修改">修改
             <img src="__PUBLIC__/Home/images/11.gif" title="删除">删除&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            共有 120 条记录，当前第 1/10 页</td>
-            <td><table border="0" align="right" cellpadding="0" cellspacing="0">
+            共有 120 条记录，当前第 1/10 页 --><td><div class="STYLE3" >{$page}</div></td><!-- </td> -->
+            <!-- <td><table border="0" align="right" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="40"><img src="__PUBLIC__/Home/images/first.gif" width="37" height="15" /></td>
                   <td width="45"><img src="__PUBLIC__/Home/images/back.gif" width="43" height="15" /></td>
@@ -96,7 +102,7 @@
                     页 </span></div></td>
                   <td width="40"><img src="__PUBLIC__/Home/images/go.gif" width="37" height="15" /></td>
                 </tr>
-            </table></td>
+            </table></td> -->
           </tr>
         </table></td>
         <td width="16"><img src="__PUBLIC__/Home/images/tab_20.gif" width="16" height="35" /></td>
@@ -105,6 +111,16 @@
   </tr>
 </table>
 </div>
-
+<script type="text/javascript">
+  function wuliuchk(wuliuname){
+    if(wuliuname=="门店物流"){
+      window.location.href="{:U('Manage/mendianwuliu')}";
+    }else{
+      if(wuliuname=='订单物流'){
+        window.location.href="{:U('Manage/dingdanwuliu')}";
+      }
+    }
+  }
+</script>
 
 </block>
