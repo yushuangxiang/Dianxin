@@ -32,5 +32,14 @@ class UserController extends Controller {
     		$this->display('User/login');
     	}
     }
+    public function personaldata(){
+        
+
+
+
+
+        
+        $this->display('User/personaldata');
+    }
 
 }

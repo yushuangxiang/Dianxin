@@ -7,20 +7,17 @@ class ManageController extends Controller{
       if($uid>0){
         $orderdata=M('dbsx');
         $map['DBSX_LB']=array('like',array('%待办事项%','%投诉%'));
-        $result=$orderdata->field(array('DBSX_id,po_id,ZT,DBSX_LB,body,form_who,CJ_time,BJ_time,BJ_body'))->limit(30)->order('PO_id desc')->select();
-        foreach($result as $i=>$val){
-          $complaints[$i]["DBSX_id"]=$val["DBSX_id"];
-          $complaints[$i]["po_id"]=$val["po_id"];
-          $complaints[$i]["ZT"]=$val["ZT"];
-          $complaints[$i]["DBSX_LB"]=$val["DBSX_LB"];
-          $complaints[$i]["body"]=$val["body"];
-          $complaints[$i]["form_who"]=$val["form_who"];
-          $complaints[$i]["CJ_time"]=$val["CJ_time"];
-          $complaints[$i]["BJ_time"]=$val["BJ_time"];
-          $complaints[$i]["BJ_body"]=$val["BJ_body"];
-        }
-
-        $this->assign('complaints',$complaints);
+        $count=$orderdata->where($map)->count();
+        $Page=new \Think\Page($count,15);
+        $show=$Page->show();    
+        $list=$orderdata->where($map)->field(array('DBSX_id,po_id,ZT,DBSX_LB,body,form_who,CJ_time,BJ_time,BJ_body'))->limit(30)->order('PO_id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $nowpage=$Page->nowPage;
+        $totalpage=$Page->totalPages;
+        $this->assign('totalpage',$totalpage);
+        $this->assign('nowpage',$nowpage);
+        $this->assign('count',$count);
+        $this->assign('page',$show);
+        $this->assign('complaints',$list);
         $this->display('Manage/complaints');
       }else{
         $this->display('User/login');
@@ -36,7 +33,6 @@ class ManageController extends Controller{
           $savedata=$orderdata->where($tid)->save($arr);
           $this->redirect('Manage/compdetail?id='.$_GET['id']);
       }else{
-        
         $result=$orderdata->where($tid)->field(array('DBSX_id,po_id,ZT,DBSX_LB,body,form_who,to_who,CJ_time,BJ_time,BJ_body'))->limit(15)->order('PO_id desc')->select();
         $this->assign('data',$result[0]);
         $this->display('Manage/compdetail');
@@ -44,12 +40,38 @@ class ManageController extends Controller{
       
     }
     public function mendianwuliu(){
+      $pagenum=$_GET['page'];
+
       $wuliudata=M('wuliu');
       $mendian['LB']=array('like',array('%门店%'));
       $count=$wuliudata->where($mendian)->count();
       $Page=new \Think\Page($count,15);
       $show=$Page->show();
       $list=$wuliudata->where($mendian)->field(array('ID,LB,czuser,shoujianr,shoujianr_add,shoujianr_tell,zxd,CJtime,WLZT'))->order('ID desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+      $nowpage=$Page->nowPage;
+      $totalpage=$Page->totalPages;
+      $this->assign('totalpage',$totalpage);
+      $this->assign('nowpage',$nowpage);
+      $this->assign('pagenum',$pagenum);
+      $this->assign('count',$count);
+      $this->assign('list',$list);
+      $this->assign('page',$show);
+      $this->display('Manage/mendianwuliu');
+    }
+    public function dingdanwuliu(){
+      $pagenum=$_GET['page'];
+      $wuliudata=M('wuliu');
+      $dingdan['LB']=array('like',array('%订单%'));
+      $count=$wuliudata->where($dingdan)->count();
+      $Page=new \Think\Page($count,15);
+      $show=$Page->show();
+      $list=$wuliudata->where($dingdan)->field(array('ID,LB,czuser,shoujianr,shoujianr_add,shoujianr_tell,zxd,CJtime,WLZT'))->order('ID desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+      $nowpage=$Page->nowPage;
+      $totalpage=$Page->totalPages;
+      $this->assign('totalpage',$totalpage);
+      $this->assign('nowpage',$nowpage);
+      $this->assign('pagenum',$pagenum);
+      $this->assign('count',$count);
       $this->assign('list',$list);
       $this->assign('page',$show);
       $this->display('Manage/mendianwuliu');
@@ -81,15 +103,5 @@ class ManageController extends Controller{
         $this->display('Manage/fahuodetail');
       }
     }
-    public function dingdanwuliu(){
-      $wuliudata=M('wuliu');
-      $mendian['LB']=array('like',array('%订单%'));
-      $count=$wuliudata->where($mendian)->count();
-      $Page=new \Think\Page($count,15);
-      $show=$Page->show();
-      $list=$wuliudata->where($mendian)->field(array('ID,LB,czuser,shoujianr,shoujianr_add,shoujianr_tell,zxd,CJtime,WLZT'))->order('ID desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-      $this->assign('list',$list);
-      $this->assign('page',$show);
-      $this->display('Manage/mendianwuliu');
-    }
+
 }

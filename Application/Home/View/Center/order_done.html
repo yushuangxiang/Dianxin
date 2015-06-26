@@ -55,7 +55,7 @@
               <td class="STYLE3"align="center">{$data.PO_Client_visa}</td>
               <td class="STYLE3"align="center">{$data.PO_Client_visa_Nber}</td>              
               <td class="STYLE3"align="center">{$data.PO_zt}</td>              
-              <td class="STYLE3"align="center"><img src="__PUBLIC__/Home/images/edt.gif" width="16" height="16"/><a href="{:U('Center/orderdetail?qid='.$data['PO_id'])}">详情</a></td>
+              <td class="STYLE3"align="center"><img src="__PUBLIC__/Home/images/edt.gif" width="16" height="16"/><a href="{:U('Center/orderdetail?wid='.$data['PO_id'].'&type=1325')}">详情</a></td>
             </tr>
           </volist>
           </if>
@@ -68,20 +68,43 @@
     </table></td>
   </tr>
 
-  <tr>
+ <tr>
+
     <td height="35" background="__PUBLIC__/Home/images/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="12" height="35"><img src="__PUBLIC__/Home/images/tab_18.gif" width="12" height="35" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            
-            <td><div class="STYLE3" >{$page}</div></td>
+            <td class="STYLE3">共有 {$count}条记录，当前第 {$nowpage}/{$totalpage} 页</td>
+            <td class="page" style="font-size:12px;color:#033d61" >{$page}</td>
+            <style type="text/css">
+              .page{
+                width:100%
+                text-align:right;
+                padding:10px 0;
+                clear: both;
+              }
+              .page a,.pages .current{
+                font-size: 12px;
+                font-family: Arial;
+                margin:0 2px;
+              }
+              .page a,.pages .current{
+                border:1px solid #7AB63F;
+                background: #fff;
+                padding:2px 6px;
+                text-decoration: none;
+              }
+              .pages .current,.pages a:hover{
+                background: #7AB63F;
+                color:#fff;
+              }
+
+            </style>
           </tr>
         </table></td>
         <td width="16"><img src="__PUBLIC__/Home/images/tab_20.gif" width="16" height="35" /></td>
       </tr>
-    </table></td>
-  </tr>
 </table>
 </div>
 

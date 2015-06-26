@@ -8,9 +8,8 @@ class OrderController extends Controller {
 
       $id=$_GET['yid'];
       $logs=logs($id);
-
       $result=orderdetail($id);
-      $pid=$ersult['PO_PordacetID'];
+      $pid=$result['PO_PordacetID'];
       $price=price($pid);
 
 
@@ -22,28 +21,45 @@ class OrderController extends Controller {
     }
 
 //订单详情
-    public function orderdetail($id='0'){
-       $PO_id=$_GET['yid'];
-       $pid['PO_id']=$PO_id;
-       $orderdata=M('po');
-       $result=$orderdata->where($pid)->field('PO_id,PO_PordacetID,PO_name,PO_Client_name,PO_Client_bank,PO_Client_bank_id,PO_Client_visa_Nber,PO_Client_addres,PO_Client_phone,FKFS,PO_zt,PO_seles,PO_seles_id,BZ')->select();
-       //订单备注信息查询
-        $beizhu_data=M('history');
-        $hid['UP_PO_id']=$result[0]['PO_id'];
-        $beizhu=$beizhu_data->where($hid)->select();
-       //套餐资费查询
-       $product=M('adsl_tc');
-       $tc_id['TC_id']=$result[0]['PO_PordacetID'];
-       $price=$product->where($tc_id)->field('TC_KDZF')->select();
-       //订单日志查询
-       $logdata=M('history');
-       $lid['UP_PO_id']=$PO_id;
-       $logs=$logdata->where($lid)->field('ID,LB,body,TJ_time,user')->order('TJ_time desc')->select();
-       $this->assign('log',$logs);
-       $this->assign('yid',$PO_id);
-       $this->assign('price',$price[0]);
-       $this->assign('yushouli',$result[0]);
-       $this->display('Order/acceptance');
+    public function orderdetail(){
+      $id=$_GET['id'];
+      $type=$_GET['type'];
+      if($type=='1301'){
+        $orderlist="index";
+        $ordertype='预受理';
+      }if($type=='1302'){
+        $orderlist='kaikalist';
+        $ordertype='待开卡';
+      }if($type=='1303'){
+        $orderlist='dailulist';
+        $ordertype='待录单';
+      }if($type=='1304'){
+        $orderlist='paylist';
+        $ordertype='宽带待缴费';
+      }if($type=='1305'){
+        $orderlist='installlist';
+        $ordertype='宽带待施工';
+      }if($type=='1306'){
+        $orderlist='dankuanlist';
+        $ordertype='单宽已完工';
+      }if($type=='1307'){
+        $orderlist='ronghepaylist';
+        $ordertype='融合待缴费';
+      }if($type=='1308'){
+        $orderlist='rongheoverlist';
+        $ordertype='融合完工';
+      }
+      $this->assign('ordertype',$ordertype);
+      $this->assign('orderlist',$orderlist);      
+      $logs=logs($id);
+      $result=orderdetail($id);
+      $pid=$result['PO_PordacetID'];
+      $price=price($pid);
+      $this->assign('log',$logs);
+      $this->assign('yid',$id);
+      $this->assign('price',$price[0]);
+      $this->assign('data',$result);
+       $this->display('Order/orderdetail');
     }
 
 

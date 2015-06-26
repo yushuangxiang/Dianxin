@@ -51,7 +51,7 @@
               <td class="STYLE3"align="center">{$data.PO_name}</td>
               <td class="STYLE3"align="center">{$data.PO_Client_visa}</td>
               <td class="STYLE3"align="center">{$data.PO_Client_visa_Nber}</td>              
-              <td class="STYLE3"align="center"><img src="__PUBLIC__/Home/images/edt.gif" width="16" height="16"/><a href="{:U('Home/Order/install?sid='.$data['PO_id'])}">详情</a></td>
+              <td class="STYLE3"align="center"><img src="__PUBLIC__/Home/images/edt.gif" width="16" height="16"/><a href="{:U('Order/orderdetail?id='.$data['PO_id'].'&type=1305')}">详情</a></td>
             </tr>
           </volist>
           </if>

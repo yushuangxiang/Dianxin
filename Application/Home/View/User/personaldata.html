@@ -1,0 +1,129 @@
+<block name="body"><extend name="Base/common" />
+<div class="main_box">
+  <div class="content_right">
+    <div id="title_position">
+      <dt>
+        <dd class="STYLE3"><img src="__PUBLIC__/Home/images/tb.gif" id="img_tb" /><span>你当前的位置：[个人中心]---[个人资料]---[<span><marquee style="color:red;width:60px;height:16px" scrollamount="2" direction="left" >资料详情</marquee></span>]</span></dd>
+      </dt>
+    </div>
+
+    <div id="tousu">
+      <dt>
+        <dl class="STYLE4">个人资料</dl>
+        <table width="380" class="STYLE7" align="center">
+          <tr>
+            <td class="STYLE10">收件门店:</td><td>{$data.czuser}</td>
+          </tr>
+          <tr>
+            <td class="STYLE10">收件人:</td><td>{$data.shoujianr}</td>
+          </tr>
+          <tr>
+          <td class="STYLE10">收件地址:</td><td>{$data.shoujianr_add} </td>
+        </tr>
+        <tr>
+          <td class="STYLE10">收件人电话:</td><td>{$data.shoujianr_tell}</td>
+        </tr>
+        <tr>
+          <td class="STYLE10">装箱单:</td><td>{$data.zxd}</td>
+        </tr>
+        <tr>
+          <td class="STYLE10">物流创建时间:</td><td>{$data.CJtime}</td>
+        </tr>
+        <tr>
+          <td class="STYLE10">创建人:</td><td>{$data.CJuser}</td>
+        </tr><form action="" method="post" id="form">
+        <if condition="$data['fahuor'] eq null">
+
+          <tr>
+            <td class="STYLE10">发货人:</td><td><input type="text" name="fahuor"></td>
+          </tr>
+        <else/>
+          <tr>
+            <td class="STYLE10">发货人:</td><td>{$data.fahuor}</td>
+          </tr>
+        </if>
+        <if condition="$data['fahuor_add'] eq null">
+        <tr>
+          <td class="STYLE10">发货地址:</td><td><input type="text" name="fahuor_add"></td>
+          </tr>
+        <else/>
+          <tr>
+            <td class="STYLE10">发货地址:</td><td>{$data.fahuor_add}</td>
+          </tr>
+        </if>
+        <if condition="$data['fahuor_tel'] eq null">
+          <tr>
+            <td class="STYLE10">发货人电话:</td><td><input type="text" name="fahuor_tel"></td>
+          </tr>
+        <else/>
+          <tr>
+            <td class="STYLE10">发货人电话:</td><td>{$data.fahuor_tel}</td>
+          </tr>
+        </if>
+        <if condition="$data['wuliu_comp'] eq null">         
+            <tr>
+              <td class="STYLE10">物流公司:</td><td><input type="text" id="wuliu_comp" name="wuliu_comp"/></td>
+            </tr>
+        <else/>
+            <tr>
+              <td class="STYLE10">物流公司:</td><td>{$data.wuliu_comp}</td>
+            </tr>
+          </if>
+        <if condition="$data['wuliu_id'] eq null">
+            <tr>
+              <td class="STYLE10">物流单号:</td><td><input type="text" id="wuliu_id" name="wuliu_id"></td>
+            </tr>        
+
+        <else/>
+          <tr>
+            <td class="STYLE10">物流单号:</td><td>{$data.wuliu_id}</td>
+          </tr>
+        </if>
+        <if condition="$data['FHtime'] eq null">
+        <else/>
+          <tr>
+            <td class="STYLE10">发货时间:</td><td>{$data.FHtime}</td>
+          </tr>
+        </if>
+
+        <if condition="$data['WLZT'] eq '待发货'">
+            <tr>
+              <td colspan="2" align="center" class="STYLE3"><input id="fahuo" type="button" value="发货" title="点击发货"/></td>
+            </tr>       
+        <else/>
+          <tr>
+            <td class="STYLE10">订单状态:</td><td>{$data.WLZT}</td>
+          </tr>          
+        </if>
+        </form>
+          <tr id="order_status" style="display:none">
+            <td class="STYLE10">选择状态：</td>
+            <td>
+            <form action="" method="post">
+              <select name="WLZT">
+              <option value="重新发货">重新发货</option>
+              <option value="已签收">已签收</option>
+              <option value="收件地址不详">收件地址不详</option>
+              <option value="退单">退单</option>
+              <option value="收件人信息错误">收件人信息错误</option>
+            </select><input type="submit" value="更新">
+            </form>
+            
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center" class="STYLE3"><a href="{:U('Manage/mendianwuliu')}"><input type="button" value="返回" title="点击返回列表"/></a><input type="button" id="ord_status" value="更新订单状态"/></td>
+          </tr>
+        
+        
+        </table>
+        
+      </dt>
+    </div>
+    
+</div>
+
+</div>
+
+</block>
