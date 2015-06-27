@@ -72,9 +72,9 @@ class ManageController extends Controller{
       $this->assign('nowpage',$nowpage);
       $this->assign('pagenum',$pagenum);
       $this->assign('count',$count);
-      $this->assign('list',$list);
+      $this->assign('data',$list);
       $this->assign('page',$show);
-      $this->display('Manage/mendianwuliu');
+      $this->display('Manage/dingdanwuliu');
     }
     public function fahuodetail(){
       $wuliudata=M('wuliu');

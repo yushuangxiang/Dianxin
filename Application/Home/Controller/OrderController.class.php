@@ -117,7 +117,7 @@ class OrderController extends Controller {
         $this->assign('count',$count);
         $this->assign('page',$page);
         $this->assign('dailulist',$list);
-        $this->display('Order/dailulist');
+        $this->display('Order/kaikalist');
       }else{
           $this->display('User/login');
       }
