@@ -10,7 +10,10 @@
             <td width="46%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="5%"><div ><img src="__PUBLIC__/Home/images/tb.gif" width="16" height="16" /></div></td>
-                <td width="100%" class="STYLE3"><span class="STYLE3">你当前的位置</span>：[待处理订单中心]-[<span><marquee style="color:red;width:120px;height:16px" scrollamount="2" direction="left" >融合待缴费列表</marquee></span>]</td>
+                <td width="100%" class="STYLE3"><span class="STYLE3">你当前的位置</span>：[信息处理中心]---[订单物流列表]</td>
+                <td><span><select name="" id=""><option value="" checked="checked">--选择物流类别--</option>
+                                                <option value="门店物流" onclick="javascript:wuliuchk(this.value)">门店物流</option>
+                                                <option value="订单物流" onclick="javascript:wuliuchk(this.value)">订单物流</option></select></span><span></span></td>
               </tr>
             </table></td>
           </tr>
@@ -31,27 +34,38 @@
             <td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" >
               <input type="checkbox" name="checkbox" value="checkbox" />
             </td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">预录单编号</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">客户名称</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">套餐名称</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">证件类型</td>
-            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">证件号码</td>
-            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3" align="center">操作</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">物流类别</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">订单编号</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">收件人</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">收件地址</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  align="center">收件人电话</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" border="1" align="center">装箱单</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">创建时间</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">订单状态</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3" align="center">操作</td>
           </tr>
-          <if condition="$ronghepaylist eq null">
+          <if condition="$data eq null">
               <td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" ><input type="checkbox" name="checkbox" value="checkbox" /></td>
-              <td colspan="15" class="STYLE3"align="center">暂时无数据！</td>
+              <td colspan="8" class="STYLE3"align="center">暂时无数据！</td>
           <else/>
-              <volist name="ronghepaylist" id="data">
+              <volist name="data" id="data">
             <tr>
               <td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" ><input type="checkbox" name="checkbox" value="checkbox" />
               </td> 
-              <td class="STYLE3"align="center">{$data.PO_id}</td>
-              <td class="STYLE3"align="center">{$data.PO_Client_name}</td>
-              <td class="STYLE3"align="center">{$data.PO_name}</td>
-              <td class="STYLE3"align="center">{$data.PO_Client_visa}</td>
-              <td class="STYLE3"align="center">{$data.PO_Client_visa_Nber}</td>              
-              <td class="STYLE3"align="center"><img src="__PUBLIC__/Home/images/edt.gif" width="16" height="16"/><a href="{:U('Order/orderdetail?id='.$data['PO_id'].'&type=1308')}">详情</a></td>
+              <td class="STYLE3"align="center">{$data.LB}</td>
+              <td class="STYLE3"align="center">{$data.czuser}</td>
+              <td class="STYLE3"align="center">{$data.shoujianr}</td>
+              <td class="STYLE3"align="center">{$data.shoujianr_add}</td>
+              <td class="STYLE3"align="center">{$data.shoujianr_tell}</td>
+              <td class="STYLE3"align="center">{$data.zxd}</td>              
+              <td class="STYLE3"align="center">{$data.CJtime}</td>              
+              <td class="STYLE3"align="center">{$data.WLZT}</td>
+              <if condition="$data['WLZT'] eq '待发货'">
+                <td class="STYLE3"align="center"><a href="{:U('Manage/fahuodetail?id='.$data['ID'].'&type=1203')}"><input type="button" value="待发货" title="点击发货" style="float:right"></a></td>
+              <else/>
+                <td class="STYLE3"align="center"><a href="{:U('Manage/fahuodetail?id='.$data['ID'])}"><input type="button" value="详情" title="点击查看物流信息" style="float:right"></a></td>
+              </if>
+              
             </tr>
           </volist>
           </if>
@@ -63,7 +77,6 @@
       </tr>
     </table></td>
   </tr>
-
  <tr>
 
     <td height="35" background="__PUBLIC__/Home/images/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -101,8 +114,20 @@
         </table></td>
         <td width="16"><img src="__PUBLIC__/Home/images/tab_20.gif" width="16" height="35" /></td>
       </tr>
+    </table></td>
+  </tr>
 </table>
 </div>
-
+<script type="text/javascript">
+  function wuliuchk(wuliuname){
+    if(wuliuname=="门店物流"){
+      window.location.href="{:U('Manage/mendianwuliu')}";
+    }else{
+      if(wuliuname=='订单物流'){
+        window.location.href="{:U('Manage/dingdanwuliu')}";
+      }
+    }
+  }
+</script>
 
 </block>

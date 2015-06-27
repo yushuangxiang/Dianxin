@@ -1,0 +1,74 @@
+<block name="body"><extend name="Base/common" />
+<div class="main_box">
+  <div class="content_right">
+    <div id="title_position">
+      <dt>
+        <dd class="STYLE3"><img src="__PUBLIC__/Home/images/tb.gif" id="img_tb" /><span>你当前的位置：[待处理中心]---[投诉处理]---[<span><marquee style="color:red;width:88px;height:16px" scrollamount="2" direction="left" >回复</marquee></span>]</span></dd>
+      </dt>
+    </div>
+
+    <div id="tousu">
+      <dt>
+        <dl class="STYLE4">投诉处理</dl><dl>事项类别：{$data.DBSX_LB}</dl>
+        <table width="380" class="STYLE7">
+          <tr>
+            <td class="STYLE10">来自于:</td><td>{$data.form_who}</td>
+          </tr>
+          <tr>
+            <td class="STYLE10">接收人:</td><td>{$data.to_who}</td>
+          </tr>
+          <tr>
+          <td class="STYLE10">创建时间:</td><td>{$data.CJ_time} </td>
+        </tr>
+        <tr>
+          <td class="STYLE10">内容:</td><td>{$data.body}</td>
+        </tr>
+        <tr>
+          <td class="STYLE10">状态:</td><td>{$data.ZT}</td>
+        </tr>
+        <if condition="$data['BJ_body'] neq null">
+          <tr>
+            <td class="STYLE10">回复内容:</td>
+            <td >{$data.BJ_body}</td>
+          </tr>
+          <tr>
+            <td class="STYLE10">回复时间:</td>
+            <td>{$data.BJ_time}</td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center" class="STYLE3"><a href="{:U('Manage/complaints')}"><input type="button" value="返回"/></a></td>
+          </tr>
+        <else/>
+          <form action="" method="post" id="form">
+            <tr>
+            <td class="STYLE10" colspan="2"><textarea name="content" id="re_content" cols="30" rows="10"></textarea></td>
+          </tr>
+           <tr><td colspan="2"style="text-align:center"><input id="reply" type="button"value="回复"/></td></tr>
+          </form>
+        </if>
+        
+        
+        </table>
+        
+      </dt>
+    </div>
+    
+</div>
+
+</div>
+<script type="text/javascript">
+  $('#reply').click(function(){
+    var content=$('#re_content').val();
+    var pattern = new RegExp("[`~!#$^&*=|{}':;',\\[\\].<>/~@#￥……&*（）——|{}【】‘；”“']");
+    if(content.length<='0'){
+      alert('请输入回复内容！');
+    }else{
+      if(pattern.test(content)){
+      alert('不能有特殊字符!');
+      }else{
+        $('#form').submit();
+      }
+    }
+  });
+</script>
+</block>

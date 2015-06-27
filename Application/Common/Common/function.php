@@ -20,7 +20,13 @@ function get_username() {
 	$realname=$userdata->where($rid)->field('Unamename')->select();
 	return $realname[0]['Unamename'];
 }
-
+function get_usernum(){
+	$uid=is_login();
+	$rid['ID']=$uid;
+	$userdata=M('masteruser');
+	$realname=$userdata->where($rid)->field('Masteruser')->select();
+	return $realname[0]['Masteruser'];
+}
 /**
 *
 *用户数据操作
@@ -57,17 +63,19 @@ function get_username() {
 		$listurl=('Order/'.$listname);
 		$orderdata=M('po');
 		$map['PO_zt']=array('like',$status);
-		$result=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->limit(10)->order('PO_id desc')->select();
-		foreach($result as $i=>$val){
-		  $result[$i]["PO_id"]=$val["PO_id"];
-		  $result[$i]["PO_Client_name"]=$val["PO_Client_name"];
-		  $result[$i]["PO_Client_visa"]=$val["PO_Client_visa"];
-		  $result[$i]["PO_Client_visa_Nber"]=$val["PO_Client_visa_Nber"];
-		  $result[$i]["PO_name"]=$val["PO_name"];
-		}
-		return $result;
+        $count=$orderdata->where($map)->count();
+        $Page=new \Think\Page($count,15);
+        $show=$Page->show();
+        $list=$orderdata->where($map)->field(array('PO_id,PO_time,PO_zt,PO_Client_name,PO_time,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->order('PO_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $nowpage=$Page->nowPage;
+        $totalpage=$Page->totalPages;
+		$listarr[0]=$show;
+		$listarr[1]=$list;
+		$listarr[2]=$nowpage;
+		$listarr[3]=$totalpage;
+		$listarr[4]=$count;
+		return $listarr;
     }
-
 
 /**
 *
@@ -106,12 +114,12 @@ function  beizhu($id=0){
 * @return 用户订单价格
 **/
 
-function price($tc_id=0){
+function price($tc_id='0'){
 	//套餐资费查询
 	$product=M('adsl_tc');
-	$tc_id['TC_id']=$tc_id;
-	$price=$product->where($tc_id)->field('TC_KDZF')->select();
-	return $price[0]['TC_KDZF'];
+	$id['TC_id']=$tc_id;
+	$price=$product->where($id)->field('TC_Price')->select();
+	return $price[0]['TC_Price'];
 }
 
 

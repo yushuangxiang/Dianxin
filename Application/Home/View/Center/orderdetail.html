@@ -3,10 +3,10 @@
   <div class="content_right">
     <div id="title_position">
       <dt>
-        <dd class="STYLE3"><img src="__PUBLIC__/Home/images/tb.gif" id="img_tb" /><span>你当前的位置：[待处理中心]---[预受理]---[<span><marquee style="color:red;width:88px;height:16px" scrollamount="2" direction="left" >预受理订单详情</marquee></span>]</span></dd>
+        <dd class="STYLE3"><img src="__PUBLIC__/Home/images/tb.gif" id="img_tb" /><span>你当前的位置：[订单中心]---[<span><marquee style="color:red;width:88px;height:16px" scrollamount="2" direction="left" >{$ordertype}详情</marquee></span>]</span></dd>
       </dt>
     </div>
-      <form action="{:U('Order/acceptance_save?yid='.$yid)}" method="post" id="form">
+      <form action="{:U('Center/order_save?id='.$id.'&type='.$type)}" method="post" id="form">
       <table class="tab_info"  cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="8"  class="STYLE6">>>订购信息</td>
@@ -114,7 +114,7 @@
           </td>
           </tr>
           <tr>
-            <td colspan="3"class="STYLE8"><input  id="subchek" type="button"value="提交处理"/><a href="{:U('Center/order_done')}" style="text-decoration:none;"><input type="button" value="返回预受理列表"/></a></td>
+            <td colspan="3"class="STYLE8"><input  id="subchek" type="button"value="提交处理"/><a href="{:U('Center/'.$orderlist)}" style="text-decoration:none;"><input type="button" value="返回{$ordertype}列表"/></a></td>
         </tr>
       </table>
 

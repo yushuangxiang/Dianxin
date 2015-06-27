@@ -21,13 +21,13 @@
                 <td width="77%" height="0" valign="bottom">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td width="50" height="19"><div align="center"><img src="__PUBLIC__/Home/images/main_12.gif" width="49" height="19"></div></td>
-                    <td width="50"><div align="center"><img src="__PUBLIC__/Home/images/main_14.gif" width="48" height="19"></div></td>
-                    <td width="50"><div align="center"><img src="__PUBLIC__/Home/images/main_16.gif" width="48" height="19"></div></td>
-                    <td width="50"><div align="center"><img src="__PUBLIC__/Home/images/main_18.gif" width="48" height="19"></div></td>
+                    <td width="50" height="19"><div align="center" id="shouye"><img src="__PUBLIC__/Home/images/main_12.gif" width="49" height="19"></div></td><!-- 首页 -->
+                    <td width="50"><div align="center" onclick="location.href='javascript:history.go(-1);'"><img src="__PUBLIC__/Home/images/main_14.gif" width="48" height="19"></div></td><!-- 后退 -->
+                    <td width="50"><div align="center" onclick="location.href='javascript:history.go(1);'"><img src="__PUBLIC__/Home/images/main_16.gif" width="48" height="19"></div></td><!-- 请进 -->
+                    <td width="50"><div align="center" onclick="location.href='javascript:history.go(0);'"><img src="__PUBLIC__/Home/images/main_18.gif" width="48" height="19"></div></td><!-- 刷新 -->
                     <td width="50"><div align="center"><a href="{:U('User/logout')}" title="退出账户"><img src="__PUBLIC__/Home/images/main_20.gif" width="48" height="19"/></a></div></td>
                     <td width="26"><div align="center"><img src="__PUBLIC__/Home/images/main_21.gif" width="26" height="19"></div></td>
-                    <td width="100"><div align="center"><img src="__PUBLIC__/Home/images/main_22.gif" width="98" height="19"></div></td>
+                    <td width="100"><div align="center"><a href="{:U('User/personaldata')}"><img src="__PUBLIC__/Home/images/main_22.gif" width="98" height="19"/></a></div></td><!-- 个人资料 -->
                     <td>&nbsp;</td>
                   </tr>
                 </table></td>
@@ -121,141 +121,71 @@
   </tr>
 </table>
 </block>
-
 <script type="text/javascript" language="javascript">
-
 function show_cur_times(){
-
 //获取当前日期
-
  var date_time = new Date();
-
  //定义星期
-
  var week;
-
  //switch判断
-
  switch (date_time.getDay()){
-
 case 1: week="星期一"; break;
-
 case 2: week="星期二"; break;
-
 case 3: week="星期三"; break;
-
 case 4: week="星期四"; break;
-
 case 5: week="星期五"; break;
-
 case 6: week="星期六"; break;
-
 default:week="星期天"; break;
-
  }
-
- 
-
  //年
-
  var year = date_time.getFullYear();
-
   //判断小于10，前面补0
-
    if(year<10){
-
   year="0"+year;
-
  }
-
- 
-
- //月
-
+//月
  var month = date_time.getMonth()+1;
-
   //判断小于10，前面补0
-
   if(month<10){
-
 month="0"+month;
-
- }
-
- 
-
- //日
-
+ }//日
  var day = date_time.getDate();
-
   //判断小于10，前面补0
-
-   if(day<10){
-
+  if(day<10){
   day="0"+day;
-
- }
-
- 
-
+ } 
  //时
-
  var hours =date_time.getHours();
-
   //判断小于10，前面补0
-
-    if(hours<10){
-
-  hours="0"+hours;
-
+   if(hours<10){
+ hours="0"+hours;
  }
-
- 
-
  //分
-
  var minutes =date_time.getMinutes();
-
-  //判断小于10，前面补0
-
-    if(minutes<10){
-
-  minutes="0"+minutes;
-
- }
-
- 
-
- //秒
-
- var seconds=date_time.getSeconds();
-
-  //判断小于10，前面补0
-
-    if(seconds<10){
-
-  seconds="0"+seconds;
-
- }
-
- 
-
- //拼接年月日时分秒
-
- var date_str = year+"年"+month+"月"+day+"日 "+hours+":"+minutes+":"+seconds+" "+week;
-
- 
-
- //显示在id为showtimes的容器里
-
- document.getElementById("showtimes").innerHTML= date_str;
-
+ //判断小于10，前面补0
+   if(minutes<10){
+ minutes="0"+minutes;
 }
-
- 
-
+ //秒
+var seconds=date_time.getSeconds();
+ //判断小于10，前面补0
+   if(seconds<10){
+  seconds="0"+seconds;
+ }
+ //拼接年月日时分秒
+ var date_str = year+"年"+month+"月"+day+"日 "+hours+":"+minutes+":"+seconds+" "+week;
+ //显示在id为showtimes的容器里
+ document.getElementById("showtimes").innerHTML= date_str;
+}
  //设置1秒调用一次show_cur_times函数
-
 setInterval("show_cur_times()",100);
-
+</script>
+<script type="text/javascript">
+  $('#shouye').click(function(){
+    window.location.href="{:U('Index/index')}";
+  });
+/*    $('#houtui').click(function(){
+      alert(12613);
+    window.location.history.back(-1);
+  }); */
 </script>

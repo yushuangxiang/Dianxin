@@ -3,21 +3,21 @@
   <div class="content_right">
     <div id="title_position">
       <dt>
-        <dd class="STYLE3"><img src="__PUBLIC__/Home/images/tb.gif" id="img_tb" /><span>你当前的位置：[待处理中心]---[融合待缴费]---[<span><marquee style="color:red;width:120px;height:16px" scrollamount="2" direction="left" >融合待缴费订单详情</marquee></span>]</span></dd>
+        <dd class="STYLE3"><img src="__PUBLIC__/Home/images/tb.gif" id="img_tb" /><span>你当前的位置：[订单中心]---[<span><marquee style="color:red;width:60px;height:16px" scrollamount="2" direction="left" >{$ordertype}详情</marquee></span>]</span></dd>
       </dt>
     </div>
-      <form action="{:U('Order/ronghepay_save?rid='.$rid)}" method="post" id="form">
+      <form action="{:U('Order/order_save?id='.$id.'&type='.$type)}" method="post" id="form">
       <table class="tab_info"  cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="8"  class="STYLE6">>>订购信息</td>
         </tr>
         <tr class="STYLE7">
           <td class="STYLE8">订单编号：</td>
-          <td class="STYLE9">{$ronghepay.PO_id}</td>
+          <td class="STYLE9">{$data.PO_id}</td>
           <td class="STYLE8">产品ID：</td>
-          <td class="STYLE9">{$ronghepay.PO_PordacetID}</td>
+          <td class="STYLE9">{$data.PO_PordacetID}</td>
           <td class="STYLE8">价格：</td>
-          <td class="STYLE9">{$price.TC_KDZF}</td>
+          <td class="STYLE9">{$price}</td>
           <td class="STYLE8">订单状态：</td>
           <td class="STYLE9">
           <select name="PO_zt" id="zt_c">
@@ -38,28 +38,28 @@
         </tr>
         <tr class="STYLE7">
           <td class="STYLE8">销售人员：</td>
-          <td class="STYLE9">{$ronghepay.PO_seles}</td>
+          <td class="STYLE9">{$data.PO_seles}</td>
           <td class="STYLE8">销售人员ID：</td>
-          <td class="STYLE9">{$ronghepay.PO_seles_id}</td>
+          <td class="STYLE9">{$data.PO_seles_id}</td>
           <td class="STYLE8">产品名称：</td>
-          <td class="STYLE9" colspan="3">{$ronghepay.PO_name}</td>
+          <td class="STYLE9" colspan="3">{$data.PO_name}</td>
         </tr>
         <tr>
           <td colspan="8" class="STYLE6">>>客户基本信息</td>
         </tr>
         <tr class="STYLE7">
           <td class="STYLE8">客户名称：</td>
-          <td class="STYLE9">{$ronghepay.PO_Client_name}</td>
+          <td class="STYLE9">{$data.PO_Client_name}</td>
           <td class="STYLE8">身份证号码：</td>
-          <td class="STYLE9">{$ronghepay.PO_Client_visa_Nber}</td>
+          <td class="STYLE9">{$data.PO_Client_visa_Nber}</td>
           <td class="STYLE8">联系电话：</td>
-          <td class="STYLE9">{$ronghepay.PO_Client_phone}</td>
+          <td class="STYLE9">{$data.PO_Client_phone}</td>
           <td></td>
           <td></td>
         </tr>
         <tr>
           <td class="STYLE3" style="text-align:center;">装机地址：</td>
-          <td class="STYLE3" colspan="7">{$ronghepay.PO_Client_addres}</td>
+          <td class="STYLE3" colspan="7">{$data.PO_Client_addres}</td>
         </tr>
 
         <tr>
@@ -67,23 +67,23 @@
         </tr>
         <tr class="STYLE7">
           <td class="STYLE8">银行名称：</td>
-          <td class="STYLE9">{$ronghepay.PO_Client_bank}</td>
+          <td class="STYLE9">{$data.PO_Client_bank}</td>
           <td class="STYLE8">银行帐号：</td>
-          <td class="STYLE9">{$ronghepay.PO_Client_bank_id}</td>
+          <td class="STYLE9">{$data.PO_Client_bank_id}</td>
           <td class="STYLE8">开户人：</td>
-          <td class="STYLE9">{$ronghepay.PO_Client_bank_name}</td>
+          <td class="STYLE9">{$data.PO_Client_bank_name}</td>
           <td></td>
           <td></td>
         </tr>
         <tr>
-          <td class="STYLE8">备注：</td>
-          <td class="STYLE3" colspan="7">{$ronghepay.BZ}</td>
+          <td style="font-size:12px;text-align:center;">备注：</td>
+          <td class="STYLE3" colspan="7">{$data.BZ}</td>
         </tr>
         <tr class="STYLE7">
           <td colspan="8" class="STYLE6" >>>添加日志信息</td>
         </tr>
         <tr class="STYLE9">
-          <td colspan="3"><textarea name="content" cols="40" rows="5" style="margin-left:3px"></textarea></td>
+          <td colspan="3"><textarea name="content" cols="40" rows="5"  placeholder="请在此填写处理意见" style="margin-left:3px"></textarea></td>
           <td colspan="5" rowspan="2">
               <table class="log_tab" cellspacing="0"cellpadding="0" width="100%">
               <tr style="background: url(__PUBLIC__/Home/images/bg.gif) repeat-x;">
@@ -114,15 +114,16 @@
           </td>
           </tr>
           <tr>
-            <td colspan="3"class="STYLE8"><input  id="subchek" type="button"value="提交处理"/><a href="{:U('Order/ronghepaylist')}" style="text-decoration:none;"><input type="button" value="返回待开卡列表"/></a></td>
+            <td colspan="3"class="STYLE8"><input  id="subchek" type="button"value="提交处理"/><a href="{:U('Order/'.$orderlist)}" style="text-decoration:none;"><input type="button" value="返回{$ordertype}列表"/></a></td>
         </tr>
       </table>
+
       <script type="text/javascript">
       $('#subchek').click(function(){
          var zt=$('#zt_c').val();
          if(zt==''){
-          alert('请选择订单状态');
-          $('#zt_c').focus();
+            alert('请选择订单状态');
+            $('#zt_c').focus();
          }else{
             if(confirm("温馨提示：您确定将订单状态更新为'"+zt+"'?")){
                 $('#form').submit();
@@ -144,41 +145,82 @@
 <div id="wuliu">
       <dt>
         <dl class="STYLE4">物流信息</dl>
+        <form action="{:U('Order/wuliu_save?id='.$id.'&type='.$type)}"  method="post" id='form1'>
         <table width="380" class="STYLE7">
+        <if condition="$wuliuinfo eq null">
           <tr>
-            <td class="STYLE10">收件人:</td><td><input type="text" value="{$ronghepay.PO_Client_name}"/></td>
+            <td class="STYLE10">收件人:</td><td><input type="text" id="shoujianr" name="shoujianr" title="客户名称" value="{$data.PO_Client_name}"/></td>
           </tr>
           <tr>
-          <td class="STYLE10">收件地址:</td><td><input type="text" value="{$ronghepay.PO_Client_addres}"/>  </td>
+          <td class="STYLE10">收件地址:</td><td><input type="text" id="shoujianr_add" name="shoujianr_add" title="装机地址" value="{$data.PO_Client_addres}"/>  </td>
         </tr>
         <tr>
-          <td class="STYLE10">联系电话:</td><td><input type="text" value="{$ronghepay.PO_Client_phone}"/></td>
+          <td class="STYLE10">联系电话:</td><td><input type="text" id="shoujianr_tell" name="shoujianr_tell" title="联系电话" value="{$data.PO_Client_phone}"/></td>
         </tr>
         <tr>
-          <td class="STYLE10">发货时间:</td><td><input type="text" id="time" value="选择时间" onClick="return Calendar('time');" class="text_time"/></td>
+          <td class="STYLE10">物品清单:</td><td>中国电信天翼4G手机卡<input type="hidden" name="zxd" value="中国电信天翼4G手机卡"></td>
+        </tr>
+         <tr><td colspan="2"style="text-align:center"><input id="wuliu_sub" type="button"value="创建物流"/></td></tr>          
+          <else/>
+          <tr>
+            <td class="STYLE10">收件人:</td><td>{$wuliuinfo.shoujianr}</td>
+          </tr>
+          <tr>
+          <td class="STYLE10">收件地址:</td><td>{$wuliuinfo.shoujianr_add}</td>
         </tr>
         <tr>
-          <td class="STYLE10">发货状态:</td><td><input type="text" value="待发货"/></td>
-        <tr>
-          <td class="STYLE10">物品清单:</td><td>中国电信天翼4G手机卡</td>
-        </tr>
+          <td class="STYLE10">联系电话:</td><td>{$wuliuinfo.shoujianr_tell}</td>
         </tr>
         <tr>
-          <td class="STYLE10">发件人:</td><td><input type="text" value="赖家华"/></td></tr>
-        <tr>
-          <td class="STYLE10">发件人联系电话：</td><td><input type="text" value="13148847523"/></td>
+          <td class="STYLE10">物品清单:</td><td>{$wuliuinfo.zxd}</td>
         </tr>
         <tr>
-          <td class="STYLE10">其他：</td><td>无数据...</td>
+          <td class="STYLE10">创建人工号:</td><td>{$wuliuinfo.CJuser}</td>
         </tr>
-         <tr><td colspan="2"style="text-align:center"><input id="" type="button"value="创建物流"/></td></tr>
+        <tr>
+          <td class="STYLE10">创建时间:</td><td>{$wuliuinfo.CJtime}</td>
+        </tr>
+        <tr>
+          <td class="STYLE10">订单编号:</td><td>{$wuliuinfo.czuser}</td>
+        </tr>
+        <tr>
+          <td class="STYLE10">订单状态:</td><td>{$wuliuinfo.WLZT}</td>
+        </tr>
+        <tr>   
+            <td colspan="2"style="text-align:center"><span>物流信息已创建，点击</span><input id="wuliu_subs" type="button" value="查看"/></td>
+        </tr>              
+
+          </if>
+
         </table>
-        
+        </form>
       </dt>
     </div>
     
 </div>
 
 </div>
+<script type="text/javascript">
+  $('#wuliu_sub').click(function(){
+    var shoujianr=$("#shoujianr").val();
+    var shoujianr_add=$("#shoujianr_add").val();
+    var shoujianr_tell=$("#shoujianr_tell").val();
+    if(shoujianr.length<='0'){
+      alert('收件人不能为空！');
+    }
+    if(shoujianr_add.length<='0'){
+      alert('收件地址不能为空！');
+    }
+    if(shoujianr_tell.length<='0'){
+      alert('联系电话不能为空！');
+    }else{
+      $('#form1').submit();
+    }
 
+
+  });
+  $('#wuliu_subs').click(function(){
+    window.location.href="{:U('Manage/fahuodetail?cid='.$id.'&')}"
+  });
+</script>
 </block>
