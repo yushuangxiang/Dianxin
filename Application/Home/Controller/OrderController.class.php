@@ -67,7 +67,7 @@ class OrderController extends Controller {
       $this->assign('wuliuinfo',$wuliuinfo[0]);
       $this->display('Order/orderdetail');
     }
-   //订单信息保存
+  //订单信息保存
     public function order_save(){
       $logdata=M('history');
       $type=$_GET['type'];
@@ -85,6 +85,7 @@ class OrderController extends Controller {
       $re_zt=$yuludandata->where($pid)->save($zt);
       $this->redirect('Order/orderdetail?id='.$_GET['id'].'&type='.$type);
     }
+
     public function wuliu_save(){
       $data["shoujianr"]=$_POST['shoujianr'];
       $data["shoujianr_add"]=$_POST['shoujianr_add'];
