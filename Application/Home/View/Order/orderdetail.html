@@ -76,8 +76,41 @@
           <td></td>
         </tr>
         <tr>
-          <td style="font-size:12px;text-align:center;">备注：</td>
+          <td class="STYLE3" align="center" >备注：</td>
           <td class="STYLE3" colspan="7">{$data.BZ}</td>
+
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="STYLE3">订单受理类型：</td>
+          <if condition="$data['SLLX'] neq null">
+            <td class="STYLE3">{$data.SLLX}</td>
+          <else/>
+            <td class="STYLE3"><select name="SLLX" id="">
+              <option value="">请选择受理类型</option>
+              <foreach name="tclists" item="data" key="i">
+                <optgroup label="{$data.0}">
+                  <foreach name="data.1" item="list" key="i">
+                      <option value="{$i}"onclick="javascript:tc_check(this.value)">{$list.LB_Name}</option>
+                  </foreach>
+                </optgroup>
+              </foreach>
+              
+              
+            </select></td>
+          </if>
+          <td class="STYLE3">实际受理类型</td>
+          <td class="STYLE3" colspan="5" >
+          <foreach name="tclist" item="tclist" key="w">
+            <select name="SJSLOP" id="{$w}"  style="display:none;">
+              <foreach name="tclist" item="tcname">
+                <option value="城中村4M包6个月，5折续费套餐">{$tcname.TC_name}</option> 
+              </foreach>
+                 
+            </select>
+          </foreach>
+        </td>
         </tr>
         <tr class="STYLE7">
           <td colspan="8" class="STYLE6" >>>添加日志信息</td>
@@ -222,5 +255,12 @@
   $('#wuliu_subs').click(function(){
     window.location.href="{:U('Manage/fahuodetail?cid='.$id.'&')}"
   });
+</script>
+<script type="text/javascript">
+function tc_check(tc){
+  // alert(tc);
+    $("#12").css('display','block');
+
+  }
 </script>
 </block>

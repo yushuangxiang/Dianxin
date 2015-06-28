@@ -1,6 +1,6 @@
 <block name="body"><extend name="Base/common" />
 <div class="right_list">
-  <table  id="right_table" border="0" cellspacing="0" cellpadding="0">
+  <table style="margin: auto;" width="90%" id="right_table" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="30" background="__PUBLIC__/Home/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -37,6 +37,9 @@
             <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">证件类型</td>
             <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">证件号码</td>
             <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">下单时间</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">受理类型</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">实际受理类型</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"align="center">是否开卡</td>
             <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3" align="center">操作</td>
           </tr>
           <if condition="$yuludan eq null">
@@ -53,6 +56,9 @@
               <td class="STYLE3"align="center">{$data.PO_Client_visa}</td>
               <td class="STYLE3"align="center">{$data.PO_Client_visa_Nber}</td>              
               <td class="STYLE3"align="center">&nbsp;&nbsp;{$data.PO_time}&nbsp;&nbsp;</td>              
+              <td class="STYLE3"align="center">&nbsp;&nbsp;{$data.SLLX}&nbsp;&nbsp;</td>              
+              <td class="STYLE3"align="center">&nbsp;&nbsp;{$data.SJSLOP}&nbsp;&nbsp;</td>              
+              <td class="STYLE3"align="center">&nbsp;&nbsp;{$data.KKYQ}&nbsp;&nbsp;</td>              
               <td class="STYLE3"align="center"><img src="__PUBLIC__/Home/images/edt.gif" width="16" height="16"/><a href="{:U('Order/orderdetail?id='.$data['PO_id'].'&type=1301')}">详情</a></td>
             </tr>
           </volist>

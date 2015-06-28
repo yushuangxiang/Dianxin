@@ -2,6 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 class ManageController extends Controller{
+  //投诉事项列表
     public function complaints(){
       $uid=is_login();
       if($uid>0){
@@ -23,22 +24,30 @@ class ManageController extends Controller{
         $this->display('User/login');
       }
     }
+    //投诉处理详情页
     public function compdetail(){
       $orderdata=M('dbsx');
-      $tid['DBSX_ID']=$_GET['id'];
-      if($_POST){
-          $arr['BJ_body']=$_POST['content'];
-          $arr['BJ_time']=date('Y-m-d H:i:s',time());
-          $arr['ZT']="已回复";
-          $savedata=$orderdata->where($tid)->save($arr);
-          $this->redirect('Manage/compdetail?id='.$_GET['id']);
+      $uid=is_login();
+      if($uid>0){
+        $tid['DBSX_ID']=$_GET['id'];
+              if($_POST){
+                  $arr['BJ_body']=$_POST['content'];
+                  $arr['BJ_time']=date('Y-m-d H:i:s',time());
+                  $arr['ZT']="已回复";
+                  $savedata=$orderdata->where($tid)->save($arr);
+                  $this->redirect('Manage/compdetail?id='.$_GET['id']);
+              }else{
+                $result=$orderdata->where($tid)->field(array('DBSX_id,po_id,ZT,DBSX_LB,body,form_who,to_who,CJ_time,BJ_time,BJ_body'))->limit(15)->order('PO_id desc')->select();
+                $this->assign('data',$result[0]);
+                $this->display('Manage/compdetail');
+              }
       }else{
-        $result=$orderdata->where($tid)->field(array('DBSX_id,po_id,ZT,DBSX_LB,body,form_who,to_who,CJ_time,BJ_time,BJ_body'))->limit(15)->order('PO_id desc')->select();
-        $this->assign('data',$result[0]);
-        $this->display('Manage/compdetail');
+        $this->dispaly('User/login');
       }
       
+      
     }
+   //门店物流列表 
     public function mendianwuliu(){
       $pagenum=$_GET['page'];
 
@@ -58,6 +67,7 @@ class ManageController extends Controller{
       $this->assign('page',$show);
       $this->display('Manage/mendianwuliu');
     }
+    //订单物流列表
     public function dingdanwuliu(){
       $pagenum=$_GET['page'];
       $wuliudata=M('wuliu');
@@ -70,12 +80,12 @@ class ManageController extends Controller{
       $totalpage=$Page->totalPages;
       $this->assign('totalpage',$totalpage);
       $this->assign('nowpage',$nowpage);
-      $this->assign('pagenum',$pagenum);
       $this->assign('count',$count);
       $this->assign('data',$list);
       $this->assign('page',$show);
       $this->display('Manage/dingdanwuliu');
     }
+    //物流发货详情
     public function fahuodetail(){
       $wuliudata=M('wuliu');
       $wid['ID']=$_GET['id'];
@@ -121,5 +131,45 @@ class ManageController extends Controller{
         $this->display('Manage/fahuodetail');
       }
     }
-
+    //代理门店列表
+    public function agentstore(){
+      $agentdata=M('czuser');
+      $map['UPuserID']=$_GET['id'];
+      if($type=="1"){
+        $limit['active_ZZ']="是";
+      }elseif($type=="2"){
+        $limit['active_ZZ']="否";
+      }else{
+        $limit['active_ZZ']>='';
+      }
+      $count=$agentdata->where($map)->count();
+      $Page=new \Think\Page($count,15);
+      $show=$Page->show();
+      $nowpage=$Page->nowPage;
+      $totalpage=$Page->totalPages;
+      $this->assign('totalpage',$totalpage);
+      $this->assign('nowpage',$nowpage);
+      $this->assign('count',$count);
+      $this->assign('page',$show);
+      $list=$agentdata->where($map)->limit($Page->firstRow.','.$Page->listRows)->select();
+      $this->assign('agentstore',$list);
+      $this->display('Manage/agentstore');
+    }
+    //业务员列表
+    public function agent(){
+      $agentdata=M('czuser');
+      $type=$_GET['type'];
+      $count=$agentdata->where("KEYY>''")->count();
+      $Page=new \Think\Page($count,15);
+      $show=$Page->show();
+      $nowpage=$Page->nowPage;
+      $totalpage=$Page->totalPages;
+      $this->assign('totalpage',$totalpage);
+      $this->assign('nowpage',$nowpage);
+      $this->assign('count',$count);
+      $this->assign('page',$show);
+      $agentstore=$agentdata->where("KEYY>''")->order('Open_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+      $this->assign('agent',$agentstore);
+      $this->display('Manage/agent');
+    }
 }

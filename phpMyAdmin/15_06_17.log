@@ -1,0 +1,48 @@
+[ 2015-06-17T20:52:28+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Constant NOW_TIME already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 27 行.
+NOTIC: [8] Constant REQUEST_METHOD already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 28 行.
+NOTIC: [8] Constant IS_GET already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 29 行.
+NOTIC: [8] Constant IS_POST already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 30 行.
+NOTIC: [8] Constant IS_PUT already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 31 行.
+NOTIC: [8] Constant IS_DELETE already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 32 行.
+NOTIC: [8] Constant IS_AJAX already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 33 行.
+
+[ 2015-06-17T20:52:29+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Constant NOW_TIME already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 27 行.
+NOTIC: [8] Constant REQUEST_METHOD already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 28 行.
+NOTIC: [8] Constant IS_GET already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 29 行.
+NOTIC: [8] Constant IS_POST already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 30 行.
+NOTIC: [8] Constant IS_PUT already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 31 行.
+NOTIC: [8] Constant IS_DELETE already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 32 行.
+NOTIC: [8] Constant IS_AJAX already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 33 行.
+
+[ 2015-06-17T23:22:25+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Constant NOW_TIME already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 27 行.
+NOTIC: [8] Constant REQUEST_METHOD already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 28 行.
+NOTIC: [8] Constant IS_GET already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 29 行.
+NOTIC: [8] Constant IS_POST already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 30 行.
+NOTIC: [8] Constant IS_PUT already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 31 行.
+NOTIC: [8] Constant IS_DELETE already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 32 行.
+NOTIC: [8] Constant IS_AJAX already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 33 行.
+
+[ 2015-06-17T23:22:25+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Constant NOW_TIME already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 27 行.
+NOTIC: [8] Constant REQUEST_METHOD already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 28 行.
+NOTIC: [8] Constant IS_GET already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 29 行.
+NOTIC: [8] Constant IS_POST already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 30 行.
+NOTIC: [8] Constant IS_PUT already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 31 行.
+NOTIC: [8] Constant IS_DELETE already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 32 行.
+NOTIC: [8] Constant IS_AJAX already defined D:\Project\upupw\htdocs\ThinkPHP\Library\Think\App.class.php 第 33 行.
+

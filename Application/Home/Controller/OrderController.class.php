@@ -61,12 +61,71 @@ class OrderController extends Controller {
       $this->assign('id',$id);
       $this->assign('price',$prices);
       $this->assign('data',$result);
+      $tclist=$this->tc_check();
+      $this->assign('tclists',$tclist);
+      $m=1;
+      $tcarr[$m]=array();
+      foreach ($tclist as $i => $data) {
+        
+        foreach($data as $k=>$val){
+
+            
+            if(is_array($val)){
+              foreach ($val as $j => $values) {
+                $arr[$k][$j]=$values['LB_Name'];
+              } 
+            }else{
+              $arr[$k]=$val;
+            }
+
+            if(is_array($arr[$k])){
+                foreach ($arr[$k] as $p=>$vals) {
+                  $condition['TC_lb']=array('like',array('%'.$vals.'%'));
+                  $tc_xq=M('adsl_tc')->where($condition)->field('TC_name')->select();
+                  if(is_array($tc_xq)){
+                      $lists[]=array();
+                      $lists=$tc_xq;                       
+                  }
+                  $tcarr[$m]=$lists;
+                  $m++;
+                  // $this->assign('tclist',$tcarr);
+                }
+            }
+        }    
+      }
+       $this->assign('tclist',$tcarr);
+      //物流信息
       $wuliudata=M('wuliu');
       $wuliuid['czuser']=$_GET['id'];
       $wuliuinfo=$wuliudata->where($wuliuid)->field('shoujianr,shoujianr_add,shoujianr_tell,CJtime,CJuser,czuser,zxd,WLZT')->select();
       $this->assign('wuliuinfo',$wuliuinfo[0]);
       $this->display('Order/orderdetail');
     }
+/**
+*
+*产品套餐查询
+*
+* @return 产品分类结果
+**/
+function tc_check(){
+  $tcdata=M('adsl_tc_lb');
+  $map1['LB_Name']=array('like',array('%城中村%'));
+  $map2['LB_Name']=array('like',array('%全城版%'));
+  $map3['LB_Name']=array('notlike',array('%全城版%','%城中村%'),'AND');
+  $result1=$tcdata->where($map1)->select();
+  $result2=$tcdata->where($map2)->select();
+  $result3=$tcdata->where($map3)->select();
+  $tclist[0][0]="城中村产品";
+  $tclist[0][1]=$result1;
+  $tclist[1][0]="全城版产品";
+  $tclist[1][1]=$result2;
+  $tclist[2][0]="其他产品";
+  $tclist[2][1]=$result3;
+  return $tclist;
+}
+
+
+
   //订单信息保存
     public function order_save(){
       $logdata=M('history');
@@ -80,6 +139,9 @@ class OrderController extends Controller {
       $re_log=$logdata->add($log);
       //订单状态更新
       $yuludandata=M('po');
+      // if($_GET['']){
+
+      // }
       $pid['PO_id']=$_GET['id'];
       $zt['PO_zt']=$_POST['PO_zt'];
       $re_zt=$yuludandata->where($pid)->save($zt);
@@ -116,7 +178,7 @@ class OrderController extends Controller {
         $this->assign('totalpage',$totalpage);
         $this->assign('count',$count);
         $this->assign('page',$page);
-        $this->assign('dailulist',$list);
+        $this->assign('kaikalist',$list);
         $this->display('Order/kaikalist');
       }else{
           $this->display('User/login');
@@ -127,106 +189,137 @@ class OrderController extends Controller {
     /*待录单业务处理逻辑*/
       /*待录订单列表*/
     public function dailulist(){
-      $type="dailu";
-      $status='%录%';
-      $result=orderlist($type,$status);
-      $page=$result[0];
-      $list=$result[1];
-      $nowpage=$result[2];
-      $totalpage=$result[3];
-      $count=$result[4];
-      $this->assign('nowpage',$nowpage);
-      $this->assign('totalpage',$totalpage);
-      $this->assign('count',$count);
-      $this->assign('page',$page);
-      $this->assign('dailulist',$list);
-      $this->display('Order/dailulist');
+      $uid=is_login();
+      if($uid>0){
+          $type="dailu";
+          $status='%录%';
+          $result=orderlist($type,$status);
+          $page=$result[0];
+          $list=$result[1];
+          $nowpage=$result[2];
+          $totalpage=$result[3];
+          $count=$result[4];
+          $this->assign('nowpage',$nowpage);
+          $this->assign('totalpage',$totalpage);
+          $this->assign('count',$count);
+          $this->assign('page',$page);
+          $this->assign('dailulist',$list);
+          $this->display('Order/dailulist');
+      }else{
+         $this->display('User/login');
+      }
     }
 
     /*待缴费列表*/
     public function paylist(){
-      $type="pay";
-      $status="%宽带待缴费%";
-      $result=orderlist($type,$status);
-      $page=$result[0];
-      $list=$result[1];
-      $nowpage=$result[2];
-      $totalpage=$result[3];
-      $count=$result[4];
-      $this->assign('nowpage',$nowpage);
-      $this->assign('totalpage',$totalpage);
-      $this->assign('count',$count);      
-      $this->assign('page',$page);
-      $this->assign('paylist',$list);
-      $this->display('Order/paylist');
+      $uid=is_login();
+      if($uid>0){
+        $type="pay";
+        $status="%宽带待缴费%";
+        $result=orderlist($type,$status);
+        $page=$result[0];
+        $list=$result[1];
+        $nowpage=$result[2];
+        $totalpage=$result[3];
+        $count=$result[4];
+        $this->assign('nowpage',$nowpage);
+        $this->assign('totalpage',$totalpage);
+        $this->assign('count',$count);      
+        $this->assign('page',$page);
+        $this->assign('paylist',$list);
+        $this->display('Order/paylist');
+      }else{
+        $this->display('User/login');
+      }
+      
     }
     /*宽带待施工订单列表*/
     public function installlist(){
-      $type="install";
-      $status="%待施工%";
-      $result=orderlist($type,$status);
-      $page=$result[0];
-      $list=$result[1];
-      $nowpage=$result[2];
-      $totalpage=$result[3];
-      $count=$result[4];
-      $this->assign('nowpage',$nowpage);
-      $this->assign('totalpage',$totalpage);
-      $this->assign('count',$count);
-      $this->assign('page',$page);
-      $this->assign('install',$list);
-      $this->display('Order/installlist'); 
+      $uid=is_login();
+      if($uid>0){
+        $type="install";
+        $status="%待施工%";
+        $result=orderlist($type,$status);
+        $page=$result[0];
+        $list=$result[1];
+        $nowpage=$result[2];
+        $totalpage=$result[3];
+        $count=$result[4];
+        $this->assign('nowpage',$nowpage);
+        $this->assign('totalpage',$totalpage);
+        $this->assign('count',$count);
+        $this->assign('page',$page);
+        $this->assign('install',$list);
+        $this->display('Order/installlist');
+      }else{
+        $this->display('User/login');
+      } 
     }
 
     //单宽已完工订单列表
     public function dankuanlist(){
-      $type="dankuan";
-      $status="%单宽%";
-      $result=orderlist($type,$status);
-      $page=$result[0];
-      $list=$result[1];
-      $nowpage=$result[2];
-      $totalpage=$result[3];
-      $count=$result[4];
-      $this->assign('nowpage',$nowpage);
-      $this->assign('totalpage',$totalpage);
-      $this->assign('count',$count);
-      $this->assign('page',$page);
-      $this->assign('dankuanlist',$list);
-      $this->display('Order/dankuanlist'); 
+      $uid=is_login();
+      if($uid>0){
+        $type="dankuan";
+        $status="%单宽%";
+        $result=orderlist($type,$status);
+        $page=$result[0];
+        $list=$result[1];
+        $nowpage=$result[2];
+        $totalpage=$result[3];
+        $count=$result[4];
+        $this->assign('nowpage',$nowpage);
+        $this->assign('totalpage',$totalpage);
+        $this->assign('count',$count);
+        $this->assign('page',$page);
+        $this->assign('dankuanlist',$list);
+        $this->display('Order/dankuanlist'); 
+      }else{
+        $this->display('User/login');
+      }
     }
     //融合待缴费
     public function ronghepaylist(){
-      $type="ronghepay";
-      $status="%融合待缴费%";
-      $result=orderlist($type,$status);
-      $page=$result[0];
-      $list=$result[1];
-      $nowpage=$result[2];
-      $totalpage=$result[3];
-      $count=$result[4];
-      $this->assign('nowpage',$nowpage);
-      $this->assign('totalpage',$totalpage);
-      $this->assign('count',$count);
-      $this->assign('page',$page);
-      $this->assign('ronghepaylist',$list);
-      $this->display('Order/ronghepaylist'); 
+      $uid=is_login();
+      if($uid>0){
+        $type="ronghepay";
+        $status="%融合待缴费%";
+        $result=orderlist($type,$status);
+        $page=$result[0];
+        $list=$result[1];
+        $nowpage=$result[2];
+        $totalpage=$result[3];
+        $count=$result[4];
+        $this->assign('nowpage',$nowpage);
+        $this->assign('totalpage',$totalpage);
+        $this->assign('count',$count);
+        $this->assign('page',$page);
+        $this->assign('ronghepaylist',$list);
+        $this->display('Order/ronghepaylist'); 
+      }else{
+        $this->display('User/login');
+      }
     }
     //融合完工
     public function rongheoverlist(){
-      $type="rongheover";
-      $status="%融合完工%";
-      $result=orderlist($type,$status);
-      $page=$result[0];
-      $list=$result[1];
-      $nowpage=$result[2];
-      $totalpage=$result[3];
-      $count=$result[4];
-      $this->assign('nowpage',$nowpage);
-      $this->assign('totalpage',$totalpage);
-      $this->assign('count',$count);
-      $this->assign('page',$page);
-      $this->assign('rongheoverlist',$list);
-      $this->display('Order/rongheoverlist'); 
+      $uid=is_login();
+      if($uid>0){
+        $type="rongheover";
+        $status="%融合完工%";
+        $result=orderlist($type,$status);
+        $page=$result[0];
+        $list=$result[1];
+        $nowpage=$result[2];
+        $totalpage=$result[3];
+        $count=$result[4];
+        $this->assign('nowpage',$nowpage);
+        $this->assign('totalpage',$totalpage);
+        $this->assign('count',$count);
+        $this->assign('page',$page);
+        $this->assign('rongheoverlist',$list);
+        $this->display('Order/rongheoverlist'); 
+      }else{
+        $this->display('User/login');
+      }
     }
 }

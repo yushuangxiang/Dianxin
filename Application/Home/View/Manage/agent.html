@@ -1,0 +1,138 @@
+<block name="body"><extend name="Base/common" />
+<div class="right_list">
+  <table style="margin: auto;" width="90%" id="right_table" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="30" background="__PUBLIC__/Home/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="12" height="30"><img src="__PUBLIC__/Home/images/tab_03.gif" width="12" height="30" /></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="46%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="5%"><div ><img src="__PUBLIC__/Home/images/tb.gif" width="16" height="16" /></div></td>
+                <td width="100%" class="STYLE3"><span class="STYLE3">你当前的位置</span>：[信息处理中心]---[门店业务员列表]</td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+        <td width="16"><img src="__PUBLIC__/Home/images/tab_07.gif" width="16" height="30" /></td>
+      </tr>
+    </table></td>
+  </tr>
+
+  <tr>
+    <td>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="8" background="__PUBLIC__/Home/images/tab_12.gif">&nbsp;</td>
+        <td>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" onmouseover="changeto()"  onmouseout="changeback()">
+          <tr>
+            <td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" >
+              <input type="checkbox" name="checkbox" value="checkbox" />
+            </td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  align="center">业务员ID</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  align="center">业务员工号</td>
+			<td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  align="center"><select name="" id="">
+                                                                                <option >所有</option>
+                                                                                <option >是</option>
+                                                                                <option >否</option>
+                                                                                </select>
+                                                                              </td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  align="center">业务员姓名</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"   align="center">联系电话</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"   align="center">身份证号码</td>
+            <td background="__PUBLIC__/Home/images/bg.gif" class="STYLE3"  border="1" align="center">QQ号码</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"   align="center">联系地址</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"   align="center">划扣账号</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"   align="center">划扣开户行</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"   align="center">账号姓名</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"   align="center">划扣账号证件号码</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="80" align="center">开通账号日期</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="80" align="center">首次登录日期</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="80" align="center">账号分配时间</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="80" align="center">账号登陆次数</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="80" align="center">账号结算次数</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="80" align="center">账号结算总额</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">激活状态</td>
+            <td background="__PUBLIC__/Home/images/bg.gif"class="STYLE3"  width="50" align="center">操作</td>
+          </tr>
+          <volist name="agent" id="data">
+  		   <tr>
+          	<td width="10" height="22" background="__PUBLIC__/Home/images/bg.gif" ><input type="checkbox" name="checkbox" value="checkbox" />
+              </td> 
+          	<td class="STYLE3"align="center">{$data.ID}</td>
+          	<td class="STYLE3"align="center">{$data.czusername}</td>
+          	<td class="STYLE3"align="center">{$data.active_ZZ}</td>
+          	<td class="STYLE3"align="center">{$data.name}</td>
+          	<td class="STYLE3"align="center">{$data.tel}</td>
+          	<td class="STYLE3"align="center">{$data.HK_vsa}</td>
+          	<td class="STYLE3"align="center">{$data.QQ}</td>
+          	<td class="STYLE3"align="center">{$data.add}</td>
+          	<td class="STYLE3"align="center">{$data.HK_nber}</td>
+          	<td class="STYLE3"align="center">{$data.HK_khh}</td>
+          	<td class="STYLE3"align="center">{$data.HK_name}</td>
+          	<td class="STYLE3"align="center">{$data.HK_vsa}</td>
+          	<td class="STYLE3"align="center">{$data.Open_time}</td>
+          	<td class="STYLE3"align="center">{$data.first_login}</td>
+          	<td class="STYLE3"align="center">{$data.first_UP_time}</td>
+          	<td class="STYLE3"align="center">{$data.contcis}</td>
+          	<td class="STYLE3"align="center">{$data.JS_cont}</td>
+          	<td class="STYLE3"align="center">{$data.JS_jinge}</td>
+          	<td class="STYLE3"align="center">{$data.active_JH}</td>
+          	<td class="STYLE3"align="center"><a href="{:U('Manage/agentstore?id='.$data['ID'])}"><input type="button" value="详情" title="点击查看详情" style="float:right"></a></td>
+          </tr>
+          </volist>
+          
+        </table></td>
+        <td width="8" background="__PUBLIC__/Home/images/tab_15.gif">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+ <tr>
+
+    <td height="35" background="__PUBLIC__/Home/images/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="12" height="35"><img src="__PUBLIC__/Home/images/tab_18.gif" width="12" height="35" /></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="STYLE3">共有 {$count}条记录，当前第 {$nowpage}/{$totalpage} 页</td>
+            <td class="page" style="font-size:12px;color:#033d61" >{$page}</td>
+            <style type="text/css">
+              .page{
+                width:100%
+                text-align:right;
+                padding:10px 0;
+                clear: both;
+              }
+              .page a,.pages .current{
+                font-size: 12px;
+                font-family: Arial;
+                margin:0 2px;
+              }
+              .page a,.pages .current{
+                border:1px solid #7AB63F;
+                background: #fff;
+                padding:2px 6px;
+                text-decoration: none;
+              }
+              .pages .current,.pages a:hover{
+                background: #7AB63F;
+                color:#fff;
+              }
+
+            </style>
+          </tr>
+        </table></td>
+        <td width="16"><img src="__PUBLIC__/Home/images/tab_20.gif" width="16" height="35" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</div>
+<script type="text/javascript">
+
+  
+</script>
+
+</block>

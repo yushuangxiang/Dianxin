@@ -66,7 +66,7 @@ function get_usernum(){
         $count=$orderdata->where($map)->count();
         $Page=new \Think\Page($count,15);
         $show=$Page->show();
-        $list=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_time,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->order('PO_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $list=$orderdata->where($map)->field(array('PO_id,PO_zt,PO_Client_name,PO_time,SLLX,SJSLOP,PO_Client_visa,PO_Client_visa_Nber,PO_name'))->order('PO_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
         $nowpage=$Page->nowPage;
         $totalpage=$Page->totalPages;
 		$listarr[0]=$show;
@@ -137,4 +137,6 @@ function logs($id=0){
 	$logs=$logdata->where($lid)->field('ID,LB,body,TJ_time,user')->order('TJ_time desc')->select();
 	return $logs;
 }
+
+
 
